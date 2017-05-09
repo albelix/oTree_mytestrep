@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-from tables import group
+# from tables import group
 # from otree.api import (
 #     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
 #     Currency as c, currency_range
@@ -10,13 +10,13 @@ from tables import group
 # from tables import group
 
 
-import random
+#import random
 
 from otree.constants import BaseConstants
 from otree.models import BaseSubsession, BaseGroup, BasePlayer
 
 from otree.db import models
-from otree import widgets
+#from otree import widgets
 from otree.common import Currency as c, currency_range, safe_json
 
 author = 'Alexis Belianin'
