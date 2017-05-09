@@ -329,12 +329,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['PG_threshold'],
     },
-    {
-        'name': 'reform_AB',
-        'display_name': "Реформы",
-        'num_demo_participants': 5,
-        'app_sequence': ['reform_AB'],
-    },
+    # {
+    #     'name': 'reform_AB',
+    #     'display_name': "Реформы",
+    #     'num_demo_participants': 5,
+    #     'app_sequence': ['reform_AB'],
+    # },
 ]
 
 # anything you put after the below line will override
