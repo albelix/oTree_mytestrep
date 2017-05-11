@@ -17,6 +17,14 @@ class ResultsWaitPage(WaitPage):
         self.group.set_payoffs()
 #    wait_for_all_groups=True
 
+class PunPage(Page):
+    form_model = models.Player
+    form_fields = ['pun_{}'.format(i) for i in range(1, 5)]
+    def vars_for_template(self):
+        return {
+            'current_round': self.subsession.round_number
+        }
+
 class Results(Page):
     def vars_for_template(self):
         self.player.my_method()
@@ -65,6 +73,8 @@ class Results(Page):
 
 page_sequence = [
     Contribution,
+    ResultsWaitPage,
+    PunPage,
     ResultsWaitPage,
     Results
 ]

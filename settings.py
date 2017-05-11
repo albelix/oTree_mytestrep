@@ -321,7 +321,13 @@ SESSION_CONFIGS = [
         'name': 'PG_try',
         'display_name': "Групповая игра",
         'num_demo_participants': 5,
-        'app_sequence': ['PG_try'],
+        'app_sequence': ['PG_try', 'PG_threshold'],
+    },
+    {
+        'name': 'PG_trypun',
+        'display_name': "Пороговая игра с наказаниями",
+        'num_demo_participants': 5,
+        'app_sequence': ['PG_trypun'],
     },
     {
         'name': 'PG_threshold',

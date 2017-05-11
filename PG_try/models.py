@@ -3,12 +3,6 @@ from otree.api import (
     Currency as c, currency_range
 )
 # from tables import group
-# from otree.api import (
-#     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-#     Currency as c, currency_range
-# )
-# from tables import group
-
 
 #import random
 
@@ -29,7 +23,7 @@ PG game for EDots
 class Constants(BaseConstants):
     name_in_url = 'PG_try'
     players_per_group = 5
-    num_rounds = 8
+    num_rounds = 3
     endowment = c(100)
     lumpsum = c(160)
     efficiency_factor = 2

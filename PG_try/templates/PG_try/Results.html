@@ -2,7 +2,7 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Принятие решений - результаты участника {{ player.id_in_group }} после раунда {{ current_round }}.
+        Принятие решений - результаты участника {{ player.id_in_group }} после раунда {{ current_round }}.
 {% endblock %}
 
 {% block content %}
@@ -38,53 +38,62 @@
         <tr><td> Накопленный доход участника 3 составляет </td><td> {{ me_in_all_rounds_3}} </td></tr>
         <tr><td> Накопленный доход участника 4 составляет </td><td> {{ me_in_all_rounds_4}} </td></tr>
         <tr><td> Накопленный доход участника 5 составляет </td><td> {{ me_in_all_rounds_5}} </td></tr>
-    </table>
 
-     <table class="table-condensed" style="width:500px; margin-top:20px;">
-    {% if player.id_in_group == 1 %}
-        <p>
-            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
-        </p>
-        {% elif player.id_in_group == 2 %}
-         <p>
-            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
-         </p>
-        {% elif player.id_in_group == 3 %}
-         <p>
-            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
-         </p>
-        {% elif player.id_in_group == 4 %}
-         <p>
-            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
-         </p>
-        {% else %}
-         <p>
-            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
-            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
-         </p>
-    {% endif %}
+        <td><td></td></tr>
 
-    {% for p in group.get_others_in_group %}
-
-        <tr><td>Накопленный доход участника {{p}}</td> <td>{{ p.my_payoff}}</td></tr>
-        <tr><td>Взносы участника {{ p }}</td><td> {{ p.my_conribution }} </td></tr>
-    {% endfor %}
+        <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
 
     </table>
+
+{#     <table class="table-condensed" style="width:500px; margin-top:20px;">#}
+{#    {% if player.id_in_group == 1 %}#}
+{#        <p>#}
+{#            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>#}
+{#        </p>#}
+{#        {% elif player.id_in_group == 2 %}#}
+{#         <p>#}
+{#            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>#}
+{#         </p>#}
+{#        {% elif player.id_in_group == 3 %}#}
+{#         <p>#}
+{#            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>#}
+{#         </p>#}
+{#        {% elif player.id_in_group == 4 %}#}
+{#         <p>#}
+{#            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>#}
+{#         </p>#}
+{#        {% else %}#}
+{#         <p>#}
+{#            <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>#}
+{#            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>#}
+{#         </p>#}
+{#    {% endif %}#}
+
+{#    {% for p in group.get_others_in_group %}#}
+{##}
+{#        <tr><td>Накопленный доход участника {{p}}</td> <td>{{ p.my_payoff}}</td></tr>#}
+{#        <tr><td>Взносы участника {{ p }}</td><td> {{ p.my_conribution }} </td></tr>#}
+{#    {% endfor %}#}
+
+{#    </table> #}
 
 <br><br>
 

@@ -8,7 +8,7 @@
 {% block content %}
 <p>
 
-<!-- {% include 'PG_threshold/Instructions.html' %} -->
+{#<!-- {% include 'PG_threshold/Instructions.html' %} -->#}
 
     В начале раунда у вас было {{ Constants.endowment }}.
 <br> <br>
@@ -16,7 +16,7 @@
 <br> <br>
     Всего ваша группа внесла на общий счет {{ group.total_contribution }}.
 <br> <br>
-    Ваша накопленная сумма на общем счету составила {{ group.global_contribution }} из {{ Constants.threshold }}.
+    Ваша доля от доходов с общего счета составила {{ group.individual_share }}.
 <br> <br>
     Ваш общий доход в текущем раунде равен {{ player.payoff }}.
 </p>
@@ -39,13 +39,14 @@
         <tr><td> Накопленный доход участника 4 составляет </td><td> {{ me_in_all_rounds_4}} </td></tr>
         <tr><td> Накопленный доход участника 5 составляет </td><td> {{ me_in_all_rounds_5}} </td></tr>
 
-         <td><td></td></tr>
+        <td><td></td></tr>
 
-         <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
-         <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
-         <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
-         <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
-         <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 1 равна </td><td> {{ p1_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 2 равна </td><td> {{ p2_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 3 равна </td><td> {{ p3_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>
+        <tr><td> Сумма взносов участника 5 равна </td><td> {{ p5_contr}} </td></tr>
+
     </table>
 
 {#     <table class="table-condensed" style="width:500px; margin-top:20px;">#}
@@ -85,14 +86,14 @@
 {#            <tr><td> Сумма взносов участника 4 равна </td><td> {{ p4_contr}} </td></tr>#}
 {#         </p>#}
 {#    {% endif %}#}
-{##}
+
 {#    {% for p in group.get_others_in_group %}#}
 {##}
 {#        <tr><td>Накопленный доход участника {{p}}</td> <td>{{ p.my_payoff}}</td></tr>#}
 {#        <tr><td>Взносы участника {{ p }}</td><td> {{ p.my_conribution }} </td></tr>#}
 {#    {% endfor %}#}
 
-    </table>
+{#    </table> #}
 
 <br><br>
 
