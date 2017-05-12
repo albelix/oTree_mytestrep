@@ -32,11 +32,12 @@ PG game for EDots
 class Constants(BaseConstants):
     name_in_url = 'PG_threshold'
     players_per_group = 5
-    num_rounds = 3
+    num_rounds = 8
     endowment = c(100)
     lumpsum = c(160)
     threshold = c(2400)
     efficiency_factor = 2
+    contribution_limits = currency_range(0, endowment, 1) #define range of contribs
 
 
 class Subsession(BaseSubsession):
@@ -105,7 +106,7 @@ class Group(BaseGroup):
     #     return sum(p.in_previous_rounds()[-1].payoff for p in self.get_players())
 
 class Player(BasePlayer):
-    contribution = models.CurrencyField(doc="""The amount contributed by the player""", )
+    contribution = models.CurrencyField(doc="""The amount contributed by the player""", min=0,max=100)
     payoff = models.CurrencyField()
     total_contribution = models.CurrencyField()
     my_contribution = models.CurrencyField(doc="""The amount contributed by the player""", )

@@ -23,7 +23,7 @@ PG game for EDots
 class Constants(BaseConstants):
     name_in_url = 'PG_try'
     players_per_group = 5
-    num_rounds = 3
+    num_rounds = 8
     endowment = c(100)
     lumpsum = c(160)
     efficiency_factor = 2

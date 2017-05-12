@@ -17,16 +17,15 @@ class ResultsWaitPage(WaitPage):
         self.group.set_payoffs()
 #    wait_for_all_groups=True
 
+class ResultsWaitPage2(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_punpay()
+
+
 class PunPage(Page):
     form_model = models.Player
-    form_fields = ['pun_{}'.format(i) for i in range(1, 5)]
-    def vars_for_template(self):
-        return {
-            'current_round': self.subsession.round_number
-        }
-
-class Results(Page):
-    def vars_for_template(self):
+    form_fields = ['pun_{}'.format(i) for i in range(1, 6)]
+    def pundata_calc(self):
         self.player.my_method()
         return {
             'my_payoff': sum([p.payoff for p in self.player.in_all_rounds()]),
@@ -40,6 +39,24 @@ class Results(Page):
             'p3_contr': self.group.get_player_by_id(3).my_contribution,
             'p4_contr': self.group.get_player_by_id(4).my_contribution,
             'p5_contr': self.group.get_player_by_id(5).my_contribution,
+            'current_round': self.subsession.round_number
+        }
+
+class Results(Page):
+    def vars_for_template(self):
+        self.player.my_method1()
+        return {
+            'my_profit': sum([p.profit for p in self.player.in_all_rounds()]),
+            'my_in_all_rounds_1': self.group.get_player_by_id(1).my_profit,
+            'my_in_all_rounds_2': self.group.get_player_by_id(2).my_profit,
+            'my_in_all_rounds_3': self.group.get_player_by_id(3).my_profit,
+            'my_in_all_rounds_4': self.group.get_player_by_id(4).my_profit,
+            'my_in_all_rounds_5': self.group.get_player_by_id(5).my_profit,
+            'p1_sumcontr': self.group.get_player_by_id(1).summy_contribution,
+            'p2_sumcontr': self.group.get_player_by_id(2).summy_contribution,
+            'p3_sumcontr': self.group.get_player_by_id(3).summy_contribution,
+            'p4_sumcontr': self.group.get_player_by_id(4).summy_contribution,
+            'p5_sumcontr': self.group.get_player_by_id(5).summy_contribution,
             'current_round': self.subsession.round_number
         }
 
@@ -75,6 +92,6 @@ page_sequence = [
     Contribution,
     ResultsWaitPage,
     PunPage,
-    ResultsWaitPage,
+    ResultsWaitPage2,
     Results
 ]
