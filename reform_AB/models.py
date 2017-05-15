@@ -105,8 +105,8 @@ class Group(BaseGroup):
                     + Constants.base_consumption \
                     + (( self.num_reforms() - p.participant.vars['reforms'] ) * Constants.reform_benefits) \
                     - ( p.approval * Constants.approval_cost ) \
-                    + Constants.solidarity_benefits[self.approvals()] \
-                    - p.vote_to_overthrow
+                    + Constants.solidarity_benefits[self.approvals()]
+                    #- p.vote_to_overthrow
         # payoff after overthrow if coordination of reforming achieved
         elif self.reforms_votes_group.count(self.reforms_votes_group[0]) == len(self.reforms_votes_group):
             self.session.vars['coordinated_reforms'] = self.reforms_votes_group[0]

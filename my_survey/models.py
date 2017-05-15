@@ -202,14 +202,12 @@ class Player(BasePlayer):
             choices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                       widget = widgets.RadioSelectHorizontal()
     )
-    renovation = models.PositiveIntegerField(initial=None,
-                                 choices=[[0,'Нет, не знаю'],[1,'Что-то слышал, но не в деталях'],[2,'Да, знаю']],
+    renovation = models.PositiveIntegerField(choices=[[0,'Нет, не знаю'],[1,'Что-то слышал, но не в деталях'],[2,'Да, знаю']],
                                  verbose_name='Знаете ли вы о программе реновации ("снос пятиэтажек"), предложенной правительством Москвы?',
                                  widget=widgets.RadioSelect()
     )
 
-    attitudes = models.PositiveIntegerField(initial=None,
-                                 verbose_name='Как вы относитесь к программе реновации, предложенной правительством Москвы?',
+    attitudes = models.PositiveIntegerField(verbose_name='Как вы относитесь к программе реновации, предложенной правительством Москвы?',
                                    choices = [
                                        [1, 'Совершенно не одобряю'],
                                        [2, 'Скорее не одобряю'],
