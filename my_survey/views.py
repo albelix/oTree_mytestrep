@@ -34,7 +34,7 @@ class polit(Page):
                        'owner',
                        'responsibility',
                        'democracy',
-                        'democracy_today'
+                        'democracy_today',
                         'renovation',
                         'attitudes']
 

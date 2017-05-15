@@ -32,7 +32,7 @@ class ReformingCalculations(WaitPage):
 
 
 class PreOverthrow(Page):
-    timeout_seconds = 120
+#    timeout_seconds = 120
     def is_displayed(self):
         return self.session.vars['overthrow'] == 0
 
@@ -55,7 +55,7 @@ class PreOverthrow(Page):
     form_fields = ['approval','vote_to_overthrow']
 
 class PostOverthrow(Page):
-    timeout_seconds = 120
+#    timeout_seconds = 120
     def is_displayed(self):
         return self.session.vars['overthrow'] == 1
 
