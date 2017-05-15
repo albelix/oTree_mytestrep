@@ -114,23 +114,6 @@ class FinalResults(Page):
                 'coordinated_reforms_in_last_round': self.session.vars['coordinated_reforms']
             }
 
-class FinalVote(Page):
-    form_model = models.Player
-    form_fields = ['approval','vote_to_overthrow']
-
-    def is_displayed(self):
-        return  self.subsession.round_number == 5
-
-    def vars_for_template(self):
-        return {
-            'player_payoff_in_previous_round': self.player.in_round(self.subsession.round_number-1).payoff,
-            'player_payoff': sum([p.payoff for p in self.player.in_previous_rounds()]),
-            'overthrow_starts': self.session.vars['overthrow_round'] + 1,
-            'current_round': self.subsession.round_number,
-            'coordinated_reforms_in_previous_round': self.session.vars['coordinated_reforms']
-        }
-
-
 page_sequence =[
     Introduction,
     ReformingCalculations,
@@ -138,6 +121,5 @@ page_sequence =[
     PostOverthrow,
     PostOverthrowCalculations,
     PreOverthrowCalculations,
-    FinalVote,
     FinalResults
 ]

@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Здесь Вы можете принять решения о вычетах из доходов каждого участника после раунда {{ current_round }} в размере от 0
+    (нет вычета) до 4 (максимальный вычет). Вы потратите 0.2 за каждую единицу вычета у каждого другого участника.
+{% endblock %}
+
+{% block content %}
+
+
+    <br><br>
+
+    <b>Для всех участников</b>
+
+    <br>
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+
+        <tr><td> </td><td> Накопленный доход </td><td> Сумма взносов </td></tr>
+        <tr><td> Участник 1 </td><td> {{ me_in_all_rounds_1}} </td><td> {{ p1_contr}} </td></tr>
+        <tr><td> Участник 2 </td><td> {{ me_in_all_rounds_2}} </td><td> {{ p2_contr}}  </td></tr>
+        <tr><td> Участник 3 </td><td> {{ me_in_all_rounds_3}} </td><td> {{ p3_contr}} </td></tr>
+        <tr><td> Участник 4 </td><td> {{ me_in_all_rounds_4}} </td><td> {{ p4_contr}} </td></tr>
+        <tr><td> Участник 5 </td><td> {{ me_in_all_rounds_5}} </td><td> {{ p5_contr}} </td></tr>
+
+        <td><td></td></tr>
+
+    </table>
+
+    <p>
+
+
+        {% formfield player.pun_1 with label="Вычеты из доходов участника 1 (от 0 до 4)" %}
+        {% formfield player.pun_2 with label="Вычеты из доходов участника 2 (от 0 до 4)" %}
+        {% formfield player.pun_3 with label="Вычеты из доходов участника 3 (от 0 до 4)" %}
+        {% formfield player.pun_4 with label="Вычеты из доходов участника 4 (от 0 до 4)" %}
+        {% formfield player.pun_5 with label="Вычеты из доходов участника 5 (от 0 до 4)" %}
+
+        {% next_button %}
+
+{#    <table class="table">#}
+{#    <tr>#}
+{#        <th>Offer</th><th>Accept</th><th>Reject</th>#}
+{#    </tr>#}
+{#    {% for field in form %}#}
+{#    <tr>#}
+{#        <td>#}
+{#            {{ field.label_tag }}#}
+{#            {{ field.errors }}#}
+{#        </td>#}
+{#        <td><input type="radio" name="{{ field.html_name}}" value="True" required {% if field.value|stringformat:"s" == 'True' %}checked{% endif %}></td>#}
+{#        <td><input type="radio" name="{{ field.html_name}}" value="False" required {% if field.value|stringformat:"s" == 'False' %}checked{% endif %}></td>#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{% endblock %}

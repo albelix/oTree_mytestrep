@@ -16,14 +16,15 @@ class Contribution(Page):
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+#    wait_for_all_groups=True
 
 class Results0(Page):
-    wait_for_all_players=True
     def vars_for_template(self):
         self.player.my_method()
 
+
 class Results(Page):
-    def vars_for_template(self):
+     def vars_for_template(self):
         self.player.my_method()
         return {
             'my_payoff': sum([p.payoff for p in self.player.in_all_rounds()]),

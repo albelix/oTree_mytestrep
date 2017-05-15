@@ -33,7 +33,10 @@ class polit(Page):
                        'leftright',
                        'owner',
                        'responsibility',
-                       'democracy', 'democracy_today']
+                       'democracy',
+                        'democracy_today'
+                        'renovation',
+                        'attitudes']
 
     def before_next_page(self):
         self.player.set_payoff()

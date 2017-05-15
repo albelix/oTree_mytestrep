@@ -12,19 +12,22 @@ class Contribution(Page):
            'current_round': self.subsession.round_number
         }
 
-
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+
+#    wait_for_all_groups=True
 
 class Results0(Page):
     wait_for_all_players=True
     def vars_for_template(self):
         self.player.my_method()
 
-class Results(Page):
+class PunPage(Page):
+    form_model = models.Player
+    form_fields = ['pun_{}'.format(i) for i in range(1, 6)]
     def vars_for_template(self):
-        self.player.my_method()
+        self.player.my_method() # group.set_payoffs() # my_method()
         return {
             'my_payoff': sum([p.payoff for p in self.player.in_all_rounds()]),
             'me_in_all_rounds_1': self.group.get_player_by_id(1).my_payoff,
@@ -40,37 +43,41 @@ class Results(Page):
             'current_round': self.subsession.round_number
         }
 
-   # def vars2_for_template(self):
-   # #    self.player.my_method()
-   #     all_payoffs = []
-   #
-   #     for players_ind in self.player.get_others_in_group():
-   #         all_payoffs.append({
-   #             'others_payoff': players_ind.my_payoff
-   #         })
-   #     other_player_ids = [p.id_in_group for p in self.player.get_others_in_group()]
-   #     #     my_payoff = sum([p.payoff for p in self.player.in_all_rounds()]),
-   #     #     me_in_all_rounds = self.player.get_others_in_group(),
-   #     return {
-   #         'all_payoffs': all_payoffs,  # sum([p.payoff for p in self.player.in_all_rounds()]),
-   #         'other_player_ids': other_player_ids  # self.player.get_others_in_group(),
-   #     }
+class ResultsWaitPage1(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_punpay()
 
-#
-#
-#class ChoiceOne(Page):
-#    def is_displayed(self):
-#        return self.player.id_in_group == 1
+class Results1(Page):
+    wait_for_all_players=True
+    def vars_for_template(self):
+        self.player.my_method1()
 
-# def var1_for_template(self):
-#        self.group.globcont
-#        #return {
-#        #    'global_contribution': sum([p.total_contribution for p in self.player.in_all_rounds()])
-#        #}
+
+class Results(Page):
+    def vars_for_template(self):
+        self.player.my_method1()
+        return {
+            'my_profit': sum([p.profit for p in self.player.in_all_rounds()]),
+            'my_in_all_rounds_1': self.group.get_player_by_id(1).my_profit,
+            'my_in_all_rounds_2': self.group.get_player_by_id(2).my_profit,
+            'my_in_all_rounds_3': self.group.get_player_by_id(3).my_profit,
+            'my_in_all_rounds_4': self.group.get_player_by_id(4).my_profit,
+            'my_in_all_rounds_5': self.group.get_player_by_id(5).my_profit,
+            'p1_sumcontr': self.group.get_player_by_id(1).summy_contribution,
+            'p2_sumcontr': self.group.get_player_by_id(2).summy_contribution,
+            'p3_sumcontr': self.group.get_player_by_id(3).summy_contribution,
+            'p4_sumcontr': self.group.get_player_by_id(4).summy_contribution,
+            'p5_sumcontr': self.group.get_player_by_id(5).summy_contribution,
+            'current_round': self.subsession.round_number
+        }
+
 
 page_sequence = [
     Contribution,
     ResultsWaitPage,
     Results0,
+    PunPage,
+    ResultsWaitPage1,
+    Results1,
     Results
 ]

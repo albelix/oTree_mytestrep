@@ -87,8 +87,6 @@ class Group(BaseGroup):
 
         return sum(p.vote_to_overthrow for p in self.get_players())
 
-
-
     reforms_votes_group = []
     # aggregate proposed number of reforms (after overthrow mechanic)
     def reform(self):
@@ -136,9 +134,3 @@ class Player(BasePlayer):
 
     # form showing how much reforms a player desires after the overthrow
     reforms_votes = models.FloatField(widget=widgets.SliderInput(attrs={'step': '1'}), min=0, max=Constants.max_reforms, default=3)
-
-    # def approvalFinal(self):
-    #     if sum(p.approvalFinal for p in self.get_players()) >= 3:
-    #         return 1
-    #     else:
-    #         return 0
