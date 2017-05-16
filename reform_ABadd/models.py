@@ -20,7 +20,7 @@ reforming game
 """
 
 class Constants(BaseConstants):
-    name_in_url = 'reform_AB'
+    name_in_url = 'reform_ABadd'
     players_per_group = 5
     num_rounds = 5
     base_sales = 10 #16
