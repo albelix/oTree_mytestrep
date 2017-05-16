@@ -346,7 +346,7 @@ SESSION_CONFIGS = [
         'name': 'reform_AB',
         'display_name': "Реформы",
         'num_demo_participants': 5,
-        'app_sequence': ['reform_AB', 'reform_ABadd', 'my_survey'],
+        'app_sequence': ['reform_AB', 'my_survey'],
         #'use_browser_bots': True
     },
     {
