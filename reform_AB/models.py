@@ -69,14 +69,19 @@ class Group(BaseGroup):
     reformed_id = 0
     # pick one player to be reformed
     def reformed_player(self):
+        print("get_player_by_id, before while", self.reformed_id)
         while True:
             self.reformed_id = random.randint(1,Constants.players_per_group)
+            print("random id draw", self.reformed_id)
             if self.num_reforms()  \
                     - self.get_player_by_id(self.reformed_id).participant.vars['called_to_be_reformed']*Constants.players_per_group > 0:
+                print("check", self.num_reforms() - self.get_player_by_id(self.reformed_id).participant.vars['called_to_be_reformed']*Constants.players_per_group)
                     # - self.get_player_by_id(self.reformed_id).participant.vars['reforms']*Constants.players_per_group > 0:
                 # break runs if if is satisfied i.e. we picked the "right" player to reform
                 # session.vars['num_approved_reforms'] + 1  - more general. As now, won't work for more than 5 reforms
+                print("get_player_by_id, before set", self.reformed_id)
                 self.get_player_by_id(self.reformed_id).participant.vars['called_to_be_reformed'] = 1
+                print("get_player_by_id, after set", self.reformed_id)
                 break
 
         for p in self.get_players():
@@ -89,7 +94,9 @@ class Group(BaseGroup):
             else:
                 p.participant.vars['reformed_this_round'] = 0
                 p.participant.vars['reformed_previous_round'] = 0
-
+            print("number", p)
+            print("participants' reformed this round", p.participant.vars['reformed_this_round'])
+            print("participants' reformed previous round",  p.participant.vars['reformed_previous_round'])
                 #    self.refcalled = 0
             #if self.subsession.round_number!=1:
             #   self.refpastcalled = self.group.in_round(self.round_number-1).refcalled
@@ -98,6 +105,7 @@ class Group(BaseGroup):
         for p in self.get_players():
             if p.participant.vars['reformed_this_round'] == 1 and self.session.vars['total_approvals'] >= 3:
                 p.participant.vars['reforms'] += 1
+        print("******p.participant.vars['reforms']", p.participant.vars['reforms'])
         if self.session.vars['total_approvals'] >= 3:
             self.session.vars['num_approved_reforms'] += 1
 
@@ -145,6 +153,9 @@ class Group(BaseGroup):
                 Constants.base_sales \
                 - ( p.participant.vars['reforms'] * Constants.reform_penalty ) \
                 + (( self.session.vars['num_approved_reforms'] - p.participant.vars['reforms'] ) * Constants.reform_benefits)
+            print("********payoffs********")
+            print("- ( p.participant.vars['reforms'] * Constants.reform_penalty )", ( p.participant.vars['reforms'] * Constants.reform_penalty ))
+            print("( self.session.vars['num_approved_reforms'] - p.participant.vars['reforms'] )", ( self.session.vars['num_approved_reforms'] - p.participant.vars['reforms'] ))
                     #+ Constants.base_consumption \
                     #- ( p.approval * Constants.approval_cost ) \
                     #+ Constants.solidarity_benefits[self.approvals()]
