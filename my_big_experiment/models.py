@@ -61,9 +61,8 @@ class Player(BasePlayer):
         if time_elapsed == 1:
             self.income = Constants.base_stab_income
         else:
-            self.income = (Constants.base_stab_income +
-                           random.choices(Constants.income_adj,
-                                          weights=Constants.income_adj_weights, k=1)[0])
+            self.income = (Constants.base_stab_income + random.choices(Constants.income_adj,
+                            weights=Constants.income_adj_weights, k=1)[0])
 
         return
 

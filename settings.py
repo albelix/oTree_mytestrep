@@ -361,7 +361,7 @@ SESSION_CONFIGS = [
         'display_name': "Enjoy!",
         'num_demo_participants': 1,
         'app_sequence': ['my_experiment', 'my_big_experiment'],
-        'use_browser_bots': False
+        # 'use_browser_bots': False
     },
 ]
 
