@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Часть 4
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.name with label="Фамилия Имя Отчество" %}
+
+    {% formfield player.age with label="Возраст" %}
+
+    {% formfield player.sex with label="Пол" %}
+
+    {% formfield player.budget with label="В течение последнего года Ваш ежемесячный бюджет (в рублях) составлял:" %}
+
+      <p>
+        Нажмите на кнопку "Next" для завершения эксперимента
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

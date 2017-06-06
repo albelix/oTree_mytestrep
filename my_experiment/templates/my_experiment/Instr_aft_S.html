@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Добро пожаловать на эксперимент!
+{% endblock %}
+
+{% block content %}
+     <p>
+        Перед началом Части 1 эксперимента ознакомьтесь с инструкцией
+     </p>
+
+    {% next_button %}
+
+{% endblock %}
