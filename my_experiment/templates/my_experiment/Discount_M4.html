@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Часть 2
+{% endblock %}
+
+{% block content %}
+
+
+    <table class="table" border="2">
+        <tr>
+            <td>Номер группы</td>
+            <td>
+                <strong>Опция А:</strong><br>
+               К выплате через {{ months_short }} месяц
+            </td>
+            <td>
+                <strong>Опция B:</strong><br>
+               К выплате через {{ months_long }} месяца
+            </td>
+            <td>
+                Ставка процента
+            </td>
+            <td> Выбор Игрока </td>
+        </tr>
+        <tr>
+            <td>21</td><td>{{ Constants.base_sum }}</td><td>{{ offer_21|floatformat }}</td><td>{{ rate_01 }}</td>
+            <td>{% formfield player.df4c01 %}</td>
+        </tr>
+        <tr>
+            <td>22</td><td>{{ Constants.base_sum }}</td><td>{{ offer_22|floatformat }}</td><td>{{ rate_02 }}</td>
+            <td>{% formfield player.df4c02 %}</td>
+        </tr>
+        <tr>
+            <td>23</td><td>{{ Constants.base_sum }}</td><td>{{ offer_23|floatformat }}</td><td>{{ rate_03 }}</td>
+            <td>{% formfield player.df4c03 %}</td>
+        </tr>
+        <tr>
+            <td>24</td><td>{{ Constants.base_sum }}</td><td>{{ offer_24|floatformat }}</td><td>{{ rate_04 }}</td>
+            <td>{% formfield player.df4c04 %}</td>
+        </tr>
+        <tr>
+            <td>25</td><td>{{ Constants.base_sum }}</td><td>{{ offer_25|floatformat }}</td><td>{{ rate_05 }}</td>
+            <td>{% formfield player.df4c05 %}</td>
+        </tr>
+        <tr>
+            <td>26</td><td>{{ Constants.base_sum }}</td><td>{{ offer_26|floatformat }}</td><td>{{ rate_06 }}</td>
+            <td>{% formfield player.df4c06 %}</td>
+        </tr>
+        <tr>
+            <td>27</td><td>{{ Constants.base_sum }}</td><td>{{ offer_27|floatformat }}</td><td>{{ rate_07 }}</td>
+            <td>{% formfield player.df4c07 %}</td>
+        </tr>
+        <tr>
+            <td>28</td><td>{{ Constants.base_sum }}</td><td>{{ offer_28|floatformat }}</td><td>{{ rate_08 }}</td>
+            <td>{% formfield player.df4c08 %}</td>
+        </tr>
+        <tr>
+            <td>29</td><td>{{ Constants.base_sum }}</td><td>{{ offer_29|floatformat }}</td><td>{{ rate_09 }}</td>
+            <td>{% formfield player.df4c09 %}</td>
+        </tr>
+        <tr>
+            <td>30</td><td>{{ Constants.base_sum }}</td><td>{{ offer_30|floatformat }}</td><td>{{ rate_10 }}</td>
+            <td>{% formfield player.df4c10 %}</td>
+        </tr>
+    </table>
+
+    {% next_button %}
+
+{% endblock %}

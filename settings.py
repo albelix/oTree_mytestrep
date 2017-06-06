@@ -57,7 +57,7 @@ AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'EUR'
+REAL_WORLD_CURRENCY_CODE = 'RUB' # EUR'
 USE_POINTS = False
 
 # e.g. en, de, fr, it, ja, zh-hans
@@ -355,6 +355,13 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['reform_ABadd'],
         #'use_browser_bots': True
+    },
+    {
+        'name': 'my_experiment',
+        'display_name': "Enjoy!",
+        'num_demo_participants': 1,
+        'app_sequence': ['my_experiment', 'my_big_experiment'],
+        'use_browser_bots': False
     },
 ]
 

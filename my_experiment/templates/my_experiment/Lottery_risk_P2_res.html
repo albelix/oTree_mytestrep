@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Результаты: часть 2
+{% endblock %}
+
+{% block content %}
+
+    <table class="table">
+         <tr>
+            <th>Номер пары</th>
+            <th>Выбор игрока</th>
+            <th>Исход игры (L - выпал вариант, отличный от выбора игрока)</th>
+            <th>Выигрыш раунда</th>
+        </tr>
+            <tr>
+                <td>11</td><td>{{ player.risk11 }}</td><td>{{ player.risk11_res }}</td><td>{{ player.risk11_pay }}</td>
+            </tr>
+            <tr>
+                <td>12</td><td>{{ player.risk12 }}</td><td>{{ player.risk12_res }}</td><td>{{ player.risk12_pay }}</td>
+            </tr>
+            <tr>
+                <td>13</td><td>{{ player.risk13 }}</td><td>{{ player.risk13_res }}</td><td>{{ player.risk13_pay }}</td>
+            </tr>
+            <tr>
+                <td>14</td><td>{{ player.risk14 }}</td><td>{{ player.risk14_res }}</td><td>{{ player.risk14_pay }}</td>
+            </tr>
+            <tr>
+                <td>15</td><td>{{ player.risk15 }}</td><td>{{ player.risk15_res }}</td><td>{{ player.risk15_pay }}</td>
+            </tr>
+            <tr>
+                <td>16</td><td>{{ player.risk16 }}</td><td>{{ player.risk16_res }}</td><td>{{ player.risk16_pay }}</td>
+            </tr>
+            <tr>
+                <td>17</td><td>{{ player.risk17 }}</td><td>{{ player.risk17_res }}</td><td>{{ player.risk17_pay }}</td>
+            </tr>
+            <tr>
+                <td>18</td><td>{{ player.risk18 }}</td><td>{{ player.risk18_res }}</td><td>{{ player.risk18_pay }}</td>
+            </tr>
+            <tr>
+                <td>19</td><td>{{ player.risk19 }}</td><td>{{ player.risk19_res }}</td><td>{{ player.risk19_pay }}</td>
+            </tr>
+            <tr>
+                <td>20</td><td>{{ player.risk20 }}</td><td>{{ player.risk20_res }}</td><td>{{ player.risk20_pay }}</td>
+            </tr>
+    </table>
+
+    {% next_button %}
+
+{% endblock %}
