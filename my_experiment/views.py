@@ -8,7 +8,8 @@ import random
 
 
 def calc_return_a(decision, prob):
-    nature_outcome = random.choices(['W', 'L'], weights = [prob, 1-prob])[0]
+    nature_options = (['W'] * int(20 * prob)) + (['L'] * int(20 * (1 - prob)))
+    nature_outcome = random.choice(nature_options)
     if nature_outcome == 'W':
         if decision == 'A':
             nature_pay = Constants.win_pay_A_a
@@ -22,7 +23,8 @@ def calc_return_a(decision, prob):
     return nature_pay, nature_outcome
 
 def calc_return_b(decision, prob):
-    nature_outcome = random.choices(['W', 'L'], weights = [prob, 1-prob])[0]
+    nature_options = (['W'] * (20 * prob)) + (['L'] * (20 * (1 - prob)))
+    nature_outcome = random.choice(nature_options)
     if nature_outcome == 'W':
         if decision == 'A':
             nature_pay = Constants.win_pay_A_b
@@ -584,7 +586,8 @@ class Discount_M6(Page):
         self.player.df6c10_pay = df_payment(self.player.df6c10, 5, 9)
 
         self.player.payoff = self.player.df_pay + self.player.risk_P1_pay
-
+        self.participant.vars['payoff_risk'] = self.player.risk_P1_pay
+        self.participant.vars['payoff_df'] = self.player.df_pay
         return
 
 

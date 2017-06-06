@@ -373,7 +373,5 @@ class Player(BasePlayer):
         return
 
     def some_method(self):
-        self.participant.vars['payoff_risk'] = risk_P1_pay
-        self.participant.vars['payoff_df'] = self.df_pay
         return
 
