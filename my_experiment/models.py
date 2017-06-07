@@ -17,16 +17,23 @@ class Constants(BaseConstants):
     num_rounds = 1
     win_probabilities = [0.05,0.1, 0.15, 0.2, 0.25,  0.3, 0.35, 0.4, 0.45, 0.5,
                          0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1]
-    win_pay_A_a = 200
-    lose_pay_A_a= 160
-    win_pay_B_a = 400
-    lose_pay_B_a = 10
+    win_pay_A_a = 2000
+    lose_pay_A_a= 1600
+    win_pay_B_a = 4000
+    lose_pay_B_a = 100
+
     win_pay_A_b = 1000
     lose_pay_A_b = 500
     win_pay_B_b = 2000
     lose_pay_B_b = 250
-    interest_rates = [0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65]
-    base_sum = 500
+
+    interest_rates = [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55]
+    interest_rates_eff = [0.104, 0.159, 0.216, 0.274, 0.335, 0.399, 0.464, 0.532, 0.602, 0.674]
+    base_sum = 1500
+
+    conv_power_multiplier = -0.001
+    conv_multiplier = 120
+
 
 class Subsession(BaseSubsession):
     pass
@@ -360,16 +367,17 @@ class Player(BasePlayer):
     risk_P1_sel = models.CharField() #player's selection
     risk_P1_pay = models.IntegerField() #payment of random lottery
     risk_P1_res = models.CharField() #won/lost
-
+    risk_payoff = models.CurrencyField()
 
     df_nat = models.IntegerField() #number of df game
     df_sel = models.CharField() #player's selection option
     df_pay = models.IntegerField() #payment of this option
+    df_payoff = models.CurrencyField()
 
 
 
     def calc_payoff(self):
-        self.payoff = self.risk_P1_pay__add__(self.df_pay)
+        self.payoff = self.risk_payoff__add__(self.df_payoff)
         return
 
     def some_method(self):

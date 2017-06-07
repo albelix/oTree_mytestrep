@@ -5,6 +5,7 @@ from .models import Constants
 
 # Extra imports
 import random
+import math
 
 
 def calc_return_a(decision, prob):
@@ -38,10 +39,9 @@ def calc_return_b(decision, prob):
     return nature_pay, nature_outcome
 
 
-def calc_offer(periods_count, annual_rate):
-    monthly_rate = (annual_rate / 12)
+def calc_offer(periods_count, annual_eff_rate):
     return_sum = (Constants.base_sum * 
-            ((1 + monthly_rate) ** periods_count))
+            (1 + annual_eff_rate) ** (int(periods_count)/12))
     return return_sum
 
 
@@ -213,18 +213,18 @@ class Lottery_risk_P1_res(Page):
 class Discount_M2(Page):
     form_model = models.Player
     form_fields = ['df2c01', 'df2c02', 'df2c03', 'df2c04',
-            'df2c05', 'df2c06', 'df2c07', 'df2c08', 'df2c09', 'df2c10'] 
+            'df2c05', 'df2c06', 'df2c07', 'df2c08', 'df2c09', 'df2c10']
     def vars_for_template(self):
-        offer_1 = calc_offer(1, Constants.interest_rates[0])
-        offer_2 = calc_offer(1, Constants.interest_rates[1])
-        offer_3 = calc_offer(1, Constants.interest_rates[2])
-        offer_4 = calc_offer(1, Constants.interest_rates[3])
-        offer_5 = calc_offer(1, Constants.interest_rates[4])
-        offer_6 = calc_offer(1, Constants.interest_rates[5])
-        offer_7 = calc_offer(1, Constants.interest_rates[6])
-        offer_8 = calc_offer(1, Constants.interest_rates[7])
-        offer_9 = calc_offer(1, Constants.interest_rates[8])
-        offer_10 = calc_offer(1, Constants.interest_rates[9])
+        offer_1 = calc_offer(1, Constants.interest_rates_eff[0])
+        offer_2 = calc_offer(1, Constants.interest_rates_eff[1])
+        offer_3 = calc_offer(1, Constants.interest_rates_eff[2])
+        offer_4 = calc_offer(1, Constants.interest_rates_eff[3])
+        offer_5 = calc_offer(1, Constants.interest_rates_eff[4])
+        offer_6 = calc_offer(1, Constants.interest_rates_eff[5])
+        offer_7 = calc_offer(1, Constants.interest_rates_eff[6])
+        offer_8 = calc_offer(1, Constants.interest_rates_eff[7])
+        offer_9 = calc_offer(1, Constants.interest_rates_eff[8])
+        offer_10 = calc_offer(1, Constants.interest_rates_eff[9])
         json_construct = {
                 'offer_1':offer_1,
                 'offer_2':offer_2,
@@ -246,10 +246,20 @@ class Discount_M2(Page):
                 'rate_08':'{:.2}'.format(Constants.interest_rates[7]),
                 'rate_09':'{:.2}'.format(Constants.interest_rates[8]),
                 'rate_10':'{:.2}'.format(Constants.interest_rates[9]),
+                'eff_rate_01':'{:.2}'.format(Constants.interest_rates_eff[0]),
+                'eff_rate_02':'{:.2}'.format(Constants.interest_rates_eff[1]),
+                'eff_rate_03':'{:.2}'.format(Constants.interest_rates_eff[2]),
+                'eff_rate_04':'{:.2}'.format(Constants.interest_rates_eff[3]),
+                'eff_rate_05':'{:.2}'.format(Constants.interest_rates_eff[4]),
+                'eff_rate_06':'{:.2}'.format(Constants.interest_rates_eff[5]),
+                'eff_rate_07':'{:.2}'.format(Constants.interest_rates_eff[6]),
+                'eff_rate_08':'{:.2}'.format(Constants.interest_rates_eff[7]),
+                'eff_rate_09':'{:.2}'.format(Constants.interest_rates_eff[8]),
+                'eff_rate_10':'{:.2}'.format(Constants.interest_rates_eff[9]),
                 'months_short':1,
                 'months_long':2}
         return json_construct
-    
+
     def before_next_page(self):
         self.player.df2c01_pay = df_payment(self.player.df2c01, 1, 0)
         self.player.df2c02_pay = df_payment(self.player.df2c02, 1, 1)
@@ -261,23 +271,23 @@ class Discount_M2(Page):
         self.player.df2c08_pay = df_payment(self.player.df2c08, 1, 7)
         self.player.df2c09_pay = df_payment(self.player.df2c09, 1, 8)
         self.player.df2c10_pay = df_payment(self.player.df2c10, 1, 9)
-        return 
-    
+        return
+
 class Discount_M3(Page):
     form_model = models.Player
     form_fields = ['df3c01', 'df3c02', 'df3c03', 'df3c04',
             'df3c05', 'df3c06', 'df3c07', 'df3c08', 'df3c09', 'df3c10'] 
     def vars_for_template(self):
-        offer_11 = calc_offer(2, Constants.interest_rates[0])
-        offer_12 = calc_offer(2, Constants.interest_rates[1])
-        offer_13 = calc_offer(2, Constants.interest_rates[2])
-        offer_14 = calc_offer(2, Constants.interest_rates[3])
-        offer_15 = calc_offer(2, Constants.interest_rates[4])
-        offer_16 = calc_offer(2, Constants.interest_rates[5])
-        offer_17 = calc_offer(2, Constants.interest_rates[6])
-        offer_18 = calc_offer(2, Constants.interest_rates[7])
-        offer_19 = calc_offer(2, Constants.interest_rates[8])
-        offer_20 = calc_offer(2, Constants.interest_rates[9])
+        offer_11 = calc_offer(2, Constants.interest_rates_eff[0])
+        offer_12 = calc_offer(2, Constants.interest_rates_eff[1])
+        offer_13 = calc_offer(2, Constants.interest_rates_eff[2])
+        offer_14 = calc_offer(2, Constants.interest_rates_eff[3])
+        offer_15 = calc_offer(2, Constants.interest_rates_eff[4])
+        offer_16 = calc_offer(2, Constants.interest_rates_eff[5])
+        offer_17 = calc_offer(2, Constants.interest_rates_eff[6])
+        offer_18 = calc_offer(2, Constants.interest_rates_eff[7])
+        offer_19 = calc_offer(2, Constants.interest_rates_eff[8])
+        offer_20 = calc_offer(2, Constants.interest_rates_eff[9])
         json_construct = {
                 'offer_11':offer_11,
                 'offer_12':offer_12,
@@ -299,6 +309,16 @@ class Discount_M3(Page):
                 'rate_08':'{:.2}'.format(Constants.interest_rates[7]),
                 'rate_09':'{:.2}'.format(Constants.interest_rates[8]),
                 'rate_10':'{:.2}'.format(Constants.interest_rates[9]),
+                'eff_rate_01':'{:.2}'.format(Constants.interest_rates_eff[0]),
+                'eff_rate_02':'{:.2}'.format(Constants.interest_rates_eff[1]),
+                'eff_rate_03':'{:.2}'.format(Constants.interest_rates_eff[2]),
+                'eff_rate_04':'{:.2}'.format(Constants.interest_rates_eff[3]),
+                'eff_rate_05':'{:.2}'.format(Constants.interest_rates_eff[4]),
+                'eff_rate_06':'{:.2}'.format(Constants.interest_rates_eff[5]),
+                'eff_rate_07':'{:.2}'.format(Constants.interest_rates_eff[6]),
+                'eff_rate_08':'{:.2}'.format(Constants.interest_rates_eff[7]),
+                'eff_rate_09':'{:.2}'.format(Constants.interest_rates_eff[8]),
+                'eff_rate_10':'{:.2}'.format(Constants.interest_rates_eff[9]),
                 'months_short':1,
                 'months_long':3}
         return json_construct
@@ -321,16 +341,16 @@ class Discount_M4(Page):
     form_fields = ['df4c01', 'df4c02', 'df4c03', 'df4c04',
             'df4c05', 'df4c06', 'df4c07', 'df4c08', 'df4c09', 'df4c10'] 
     def vars_for_template(self):
-        offer_21 = calc_offer(3, Constants.interest_rates[0])
-        offer_22 = calc_offer(3, Constants.interest_rates[1])
-        offer_23 = calc_offer(3, Constants.interest_rates[2])
-        offer_24 = calc_offer(3, Constants.interest_rates[3])
-        offer_25 = calc_offer(3, Constants.interest_rates[4])
-        offer_26 = calc_offer(3, Constants.interest_rates[5])
-        offer_27 = calc_offer(3, Constants.interest_rates[6])
-        offer_28 = calc_offer(3, Constants.interest_rates[7])
-        offer_29 = calc_offer(3, Constants.interest_rates[8])
-        offer_30 = calc_offer(3, Constants.interest_rates[9])
+        offer_21 = calc_offer(3, Constants.interest_rates_eff[0])
+        offer_22 = calc_offer(3, Constants.interest_rates_eff[1])
+        offer_23 = calc_offer(3, Constants.interest_rates_eff[2])
+        offer_24 = calc_offer(3, Constants.interest_rates_eff[3])
+        offer_25 = calc_offer(3, Constants.interest_rates_eff[4])
+        offer_26 = calc_offer(3, Constants.interest_rates_eff[5])
+        offer_27 = calc_offer(3, Constants.interest_rates_eff[6])
+        offer_28 = calc_offer(3, Constants.interest_rates_eff[7])
+        offer_29 = calc_offer(3, Constants.interest_rates_eff[8])
+        offer_30 = calc_offer(3, Constants.interest_rates_eff[9])
         json_construct = {
                 'offer_21':offer_21,
                 'offer_22':offer_22,
@@ -352,6 +372,16 @@ class Discount_M4(Page):
                 'rate_08':'{:.2}'.format(Constants.interest_rates[7]),
                 'rate_09':'{:.2}'.format(Constants.interest_rates[8]),
                 'rate_10':'{:.2}'.format(Constants.interest_rates[9]),
+                'eff_rate_01': '{:.2}'.format(Constants.interest_rates_eff[0]),
+                'eff_rate_02': '{:.2}'.format(Constants.interest_rates_eff[1]),
+                'eff_rate_03': '{:.2}'.format(Constants.interest_rates_eff[2]),
+                'eff_rate_04': '{:.2}'.format(Constants.interest_rates_eff[3]),
+                'eff_rate_05': '{:.2}'.format(Constants.interest_rates_eff[4]),
+                'eff_rate_06': '{:.2}'.format(Constants.interest_rates_eff[5]),
+                'eff_rate_07': '{:.2}'.format(Constants.interest_rates_eff[6]),
+                'eff_rate_08': '{:.2}'.format(Constants.interest_rates_eff[7]),
+                'eff_rate_09': '{:.2}'.format(Constants.interest_rates_eff[8]),
+                'eff_rate_10': '{:.2}'.format(Constants.interest_rates_eff[9]),
                 'months_short':1,
                 'months_long':4}
         return json_construct
@@ -376,16 +406,16 @@ class Discount_M5(Page):
                    'df5c05', 'df5c06', 'df5c07', 'df5c08', 'df5c09', 'df5c10']
 
     def vars_for_template(self):
-        offer_31 = calc_offer(4, Constants.interest_rates[0])
-        offer_32 = calc_offer(4, Constants.interest_rates[1])
-        offer_33 = calc_offer(4, Constants.interest_rates[2])
-        offer_34 = calc_offer(4, Constants.interest_rates[3])
-        offer_35 = calc_offer(4, Constants.interest_rates[4])
-        offer_36 = calc_offer(4, Constants.interest_rates[5])
-        offer_37 = calc_offer(4, Constants.interest_rates[6])
-        offer_38 = calc_offer(4, Constants.interest_rates[7])
-        offer_39 = calc_offer(4, Constants.interest_rates[8])
-        offer_40 = calc_offer(4, Constants.interest_rates[9])
+        offer_31 = calc_offer(4, Constants.interest_rates_eff[0])
+        offer_32 = calc_offer(4, Constants.interest_rates_eff[1])
+        offer_33 = calc_offer(4, Constants.interest_rates_eff[2])
+        offer_34 = calc_offer(4, Constants.interest_rates_eff[3])
+        offer_35 = calc_offer(4, Constants.interest_rates_eff[4])
+        offer_36 = calc_offer(4, Constants.interest_rates_eff[5])
+        offer_37 = calc_offer(4, Constants.interest_rates_eff[6])
+        offer_38 = calc_offer(4, Constants.interest_rates_eff[7])
+        offer_39 = calc_offer(4, Constants.interest_rates_eff[8])
+        offer_40 = calc_offer(4, Constants.interest_rates_eff[9])
         json_construct = {
             'offer_31': offer_31,
             'offer_32': offer_32,
@@ -407,6 +437,16 @@ class Discount_M5(Page):
             'rate_08': '{:.2}'.format(Constants.interest_rates[7]),
             'rate_09': '{:.2}'.format(Constants.interest_rates[8]),
             'rate_10': '{:.2}'.format(Constants.interest_rates[9]),
+            'eff_rate_01': '{:.2}'.format(Constants.interest_rates_eff[0]),
+            'eff_rate_02': '{:.2}'.format(Constants.interest_rates_eff[1]),
+            'eff_rate_03': '{:.2}'.format(Constants.interest_rates_eff[2]),
+            'eff_rate_04': '{:.2}'.format(Constants.interest_rates_eff[3]),
+            'eff_rate_05': '{:.2}'.format(Constants.interest_rates_eff[4]),
+            'eff_rate_06': '{:.2}'.format(Constants.interest_rates_eff[5]),
+            'eff_rate_07': '{:.2}'.format(Constants.interest_rates_eff[6]),
+            'eff_rate_08': '{:.2}'.format(Constants.interest_rates_eff[7]),
+            'eff_rate_09': '{:.2}'.format(Constants.interest_rates_eff[8]),
+            'eff_rate_10': '{:.2}'.format(Constants.interest_rates_eff[9]),
             'months_short': 1,
             'months_long': 5}
         return json_construct
@@ -430,16 +470,16 @@ class Discount_M6(Page):
                    'df6c05', 'df6c06', 'df6c07', 'df6c08', 'df6c09', 'df6c10']
 
     def vars_for_template(self):
-        offer_41 = calc_offer(5, Constants.interest_rates[0])
-        offer_42 = calc_offer(5, Constants.interest_rates[1])
-        offer_43 = calc_offer(5, Constants.interest_rates[2])
-        offer_44 = calc_offer(5, Constants.interest_rates[3])
-        offer_45 = calc_offer(5, Constants.interest_rates[4])
-        offer_46 = calc_offer(5, Constants.interest_rates[5])
-        offer_47 = calc_offer(5, Constants.interest_rates[6])
-        offer_48 = calc_offer(5, Constants.interest_rates[7])
-        offer_49 = calc_offer(5, Constants.interest_rates[8])
-        offer_50 = calc_offer(5, Constants.interest_rates[9])
+        offer_41 = calc_offer(5, Constants.interest_rates_eff[0])
+        offer_42 = calc_offer(5, Constants.interest_rates_eff[1])
+        offer_43 = calc_offer(5, Constants.interest_rates_eff[2])
+        offer_44 = calc_offer(5, Constants.interest_rates_eff[3])
+        offer_45 = calc_offer(5, Constants.interest_rates_eff[4])
+        offer_46 = calc_offer(5, Constants.interest_rates_eff[5])
+        offer_47 = calc_offer(5, Constants.interest_rates_eff[6])
+        offer_48 = calc_offer(5, Constants.interest_rates_eff[7])
+        offer_49 = calc_offer(5, Constants.interest_rates_eff[8])
+        offer_50 = calc_offer(5, Constants.interest_rates_eff[9])
         json_construct = {
             'offer_41': offer_41,
             'offer_42': offer_42,
@@ -461,6 +501,16 @@ class Discount_M6(Page):
             'rate_08': '{:.2}'.format(Constants.interest_rates[7]),
             'rate_09': '{:.2}'.format(Constants.interest_rates[8]),
             'rate_10': '{:.2}'.format(Constants.interest_rates[9]),
+            'eff_rate_01': '{:.2}'.format(Constants.interest_rates_eff[0]),
+            'eff_rate_02': '{:.2}'.format(Constants.interest_rates_eff[1]),
+            'eff_rate_03': '{:.2}'.format(Constants.interest_rates_eff[2]),
+            'eff_rate_04': '{:.2}'.format(Constants.interest_rates_eff[3]),
+            'eff_rate_05': '{:.2}'.format(Constants.interest_rates_eff[4]),
+            'eff_rate_06': '{:.2}'.format(Constants.interest_rates_eff[5]),
+            'eff_rate_07': '{:.2}'.format(Constants.interest_rates_eff[6]),
+            'eff_rate_08': '{:.2}'.format(Constants.interest_rates_eff[7]),
+            'eff_rate_09': '{:.2}'.format(Constants.interest_rates_eff[8]),
+            'eff_rate_10': '{:.2}'.format(Constants.interest_rates_eff[9]),
             'months_short': 1,
             'months_long': 6}
 
@@ -585,9 +635,21 @@ class Discount_M6(Page):
         self.player.df6c09_pay = df_payment(self.player.df6c09, 5, 8)
         self.player.df6c10_pay = df_payment(self.player.df6c10, 5, 9)
 
-        self.player.payoff = self.player.df_pay + self.player.risk_P1_pay
-        self.participant.vars['payoff_risk'] = self.player.risk_P1_pay
-        self.participant.vars['payoff_df'] = self.player.df_pay
+        self.player.risk_payoff = int(round((Constants.conv_multiplier *
+                              (1 - math.exp(Constants.conv_power_multiplier * self.player.risk_P1_pay)))))
+        self.player.df_payoff = int(round((Constants.conv_multiplier *
+                              (1 - math.exp(Constants.conv_power_multiplier * self.player.df_pay)))))
+        self.player.payoff = self.player.df_payoff + self.player.risk_payoff
+
+        self.participant.vars['payoff_risk'] = self.player.risk_payoff
+        self.participant.vars['num_lottery'] = self.player.risk_P1_nat
+        self.participant.vars['selected_lottery'] = self.player.risk_P1_sel
+        self.participant.vars['won_or_lost'] = self.player.risk_P1_res
+
+        self.participant.vars['payoff_df'] = self.player.df_payoff
+        self.participant.vars['num_df'] = self.player.df_nat
+        self.participant.vars['selected_df'] =  self.player.df_sel
+
         return
 
 
@@ -632,6 +694,6 @@ class Instr_aft_Res(Page):
     pass
 
 page_sequence = [Instr_aft_S,
-                 Lottery_risk_P1, Lottery_risk_P1_res, Wait_aft_P1_res, Instr_aft_P1_res,
+                 Lottery_risk_P1, Wait_aft_P1_res, Instr_aft_P1_res,
                  Discount_M2, Discount_M3, Discount_M4, Discount_M5, Discount_M6,
                  Wait_aft_Res, Instr_aft_Res]

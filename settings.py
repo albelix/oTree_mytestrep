@@ -129,12 +129,24 @@ mturk_hit_settings = {
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+ROOM_DEFAULTS = {}
+
+ROOMS = [
+    {
+        'name': 'lab01',
+        'display_name': 'Эксперимент',
+        'participant_label_file': 'lab01.txt',
+    },
+]
+
+
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.00,
     'participation_fee': 0.00,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
+
 
 SESSION_CONFIGS = [
     # {

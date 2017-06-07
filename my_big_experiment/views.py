@@ -19,9 +19,9 @@ class IntroPage(Page):
     def vars_for_template(self):
         description_text = ''
         if self.round_number == 1:
-            description_text = 'Вы приступаете к разделу 1'
+            description_text = 'Вы приступаете к Части 3, раздел 1'
         if self.round_number == 7:
-            description_text = 'Вы приступаете к разделу 2'
+            description_text = 'Вы приступаете к Части 3, раздел 2'
         return {'description_text': description_text}
 
 
@@ -39,8 +39,8 @@ class ChoicePage(Page):
             self.player.paying_period = random.choice(
                 range(1, Constants.num_rounds + 1))
             tokens = self.player.in_round(self.player.paying_period).consumption
-            self.player.payoff = (Constants.conv_multiplier *
-                                  (1 - math.exp(Constants.conv_power_multiplier * tokens)))
+            self.player.payoff = int(round((Constants.conv_multiplier *
+                                  (1 - math.exp(Constants.conv_power_multiplier * tokens)))))
 
         return
 
@@ -74,7 +74,14 @@ class FinalResultsPage(Page):
 
     def vars_for_template(self):
         return {'random_consumption': self.player.in_round(self.player.paying_period).consumption,
-                'risk': self.participant.vars.get('payoff_risk')}
+                'risk': self.participant.vars.get('payoff_risk'),
+                'df': self.participant.vars.get('payoff_df'),
+                'risk_num': self.participant.vars.get('num_lottery'),
+                'df_num': self.participant.vars.get('num_df'),
+                'risk_sel': self.participant.vars.get('selected_lottery'),
+                'df_sel': self.participant.vars.get('selected_df'),
+                'risk_won': self.participant.vars.get('won_or_lost'),
+                }
 
     def is_displayed(self):
         return self.round_number == 12

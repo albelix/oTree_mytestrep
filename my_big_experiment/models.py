@@ -16,14 +16,14 @@ class Constants(BaseConstants):
     name_in_url = 'my_big_experiment'
     players_per_group = None
     num_rounds = 12
-    income_adj = [-100, 100]
+    income_adj = [-600, 600]
     income_adj_weights = [0.5, 0.5]
-    base_stab_income = 1000
+    base_stab_income = 2000
     base_decr_income = 2100
     income_change_rate = 100
-    conv_multiplier = 500
-    conv_power_multiplier = -0.02
-    r = 0.2
+    conv_multiplier = 120
+    conv_power_multiplier = -0.001
+    r = 0.0083
 
 
 class Subsession(BaseSubsession):

@@ -13,11 +13,10 @@
         <th colspan="4" style="text-align: center">Ваш выигрыш - Часть 1</th>
     </tr>
     <tr>
-            <th>Номер лотереи</th><th>Выбор игрока</th><th>Исход</th><th style="color:red;">Ваш выигрыш за игру</th>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th>Исход</th><th style="color:red;">Ваш выигрыш</th>
     </tr>
     <tr>
-            <td>{{ participant.risk_P1_nat }}</td><td>{{ player.participant.risk_P1_sel }}</td><td>{{ player.participant.risk_P1_res }}</td>
-            <td style="color:red;">{{ risk }}</td>
+            <td>{{ risk_num }}</td><td>{{ risk_sel }}</td><td>{{ risk_won }}</td><td style="color:red;">{{ risk }}</td>
     </tr>
 
 </table>
@@ -28,10 +27,10 @@
         <th colspan="3" style="text-align: center">Ваш выигрыш - Часть 2</th>
     </tr>
     <tr>
-            <th>Номер лотереи</th><th>Выбор игрока</th><th style="color:red;">Ваш выигрыш за игру</th>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th style="color:red;">Ваш выигрыш</th>
     </tr>
     <tr>
-            <td>{{ player.participant.df_nat }}</td> <td>{{ player.participant.df_sel }}</td><td style="color:red;">{{ player.participant.df_pay }}</td>
+            <td>{{ df_num }}</td> <td>{{ df_sel }}</td><td style="color:red;">{{ df }}</td>
     </tr>
 
 </table>
@@ -45,7 +44,7 @@
     <tr>
             <th style="text-align: center">Номер раунда</th>
             <th style="text-align: center">Сколько игровых очков Вы выбрали для перевода в рубли</th>
-            <th style="color:red; text-align: center">Ваш выигрыш в рублях</th>
+            <th style="color:red; text-align: center">Ваш выигрыш</th>
     </tr>
     <tr>
             <td>{{ player.paying_period }}</td><td>{{ random_consumption }}</td>
