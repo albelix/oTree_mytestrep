@@ -47,7 +47,6 @@ class Player(BasePlayer):
     disposable_income = models.IntegerField()
     paying_period = models.IntegerField()
 
-    name = models.CharField()
     age = models.IntegerField()
     sex = models.IntegerField(choices=[[1, 'Мужчина'], [2, 'Женщина']],
                               widget=widgets.RadioSelectHorizontal(),
@@ -90,4 +89,55 @@ class Player(BasePlayer):
             self.disposable_income = self.income + self.savings
         return
 
+    city = models.PositiveIntegerField(
+        verbose_name='''
+    	    Сколько человек (приблизительно) проживало в том населенном пункте, где Вы жили в возрасте 16 лет.''',
+        min=1, max=30000000,
+        initial=None)
 
+    yearsinmsc = models.PositiveIntegerField(
+        verbose_name='''
+    	    Укажите, сколько лет Вы живете в Москве. Впишите число, округленное до ближайшего целого числа лет.''',
+        min=0, max=95,
+        initial=None)
+
+
+    univ = models.CharField(
+        verbose_name='''Укажите ВУЗ, в котором учитесь(или который окончили).'''
+    )
+
+    study = models.CharField(
+        verbose_name='''Укажите  направление подготовки, на котором Вы обучаетесь(или обучались).'''
+    )
+    riskat = models.PositiveIntegerField(
+        verbose_name='''Вы любите риск или боитесь риска?''',
+        choices=[
+            [1, 'Очень люблю рисковать'],
+            [2, 'Скорее люблю рисковать'],
+            [3, 'Нейтрален к риску'],
+            [4, 'Скорее боюсь рисковать'],
+            [5, 'Очень боюсь рисковать'],
+        ],
+        widget=widgets.RadioSelect()
+    )
+
+    fin_income = models.PositiveIntegerField(
+        verbose_name='''Какое высказывание наиболее точно описывает финансовое положение вашей семьи?''',
+        choices=[
+            [1, 'Едва сводим концы с концами, денег не хватает на выживание;'],
+            [2, 'Живем от зарплаты до зарплаты, денег хватает только на неотложные нужды;'],
+            [3, 'На ежедневные расходы хватает денег, но уже покупка одежды требует накоплений;'],
+            [4,
+             'Вполне хватает денег, даже имеются некоторые накопления, но крупные покупки требуется планировать заранее;'],
+            [5, 'Можем позволить себе крупные траты при первой необходимости.'],
+        ],
+        widget=widgets.RadioSelect()
+    )
+
+    satis = models.PositiveIntegerField(
+        verbose_name='''Учитывая все обстоятельства, насколько Вы удовлетворены вашей жизнью в целом в эти дни? (от 1 «полностью не удовлетворен» до 10 «полностью удовлетворен»)''',
+        choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        widget=widgets.RadioSelectHorizontal()
+    )
+
+    mobile = models.IntegerField()

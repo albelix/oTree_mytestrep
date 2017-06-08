@@ -39,8 +39,7 @@ class ChoicePage(Page):
             self.player.paying_period = random.choice(
                 range(1, Constants.num_rounds + 1))
             tokens = self.player.in_round(self.player.paying_period).consumption
-            self.player.payoff = int(round((Constants.conv_multiplier *
-                                  (1 - math.exp(Constants.conv_power_multiplier * tokens)))))
+            self.player.payoff = int(tokens/15)
 
         return
 
@@ -89,15 +88,27 @@ class FinalResultsPage(Page):
 
 class Start(Page):
     form_model = models.Player
-    form_fields = ['name', 'age', 'sex',
-                   'budget']
+    form_fields = ['mobile', 'age', 'sex',
+                   'city', 'yearsinmsc', 'univ', 'study', 'riskat', 'fin_income', 'satis' ]
     def is_displayed(self):
         return (self.round_number % 12) == 0
+
+class ToThink(Page):
+    def vars_for_template(self):
+        return {'saved': self.player.savings,
+                'consumed': self.player.consumption,
+                'income_was': self.player.disposable_income,
+
+                'payoff': int(self.player.consumption/15),
+                'month': int(self.player.round_number - 6)
+                }
+
 
 
 page_sequence = [
     IntroPage,
     ChoicePage,
+    ToThink,
     Results,
     FinalResultsPage,
     Start

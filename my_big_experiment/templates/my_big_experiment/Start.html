@@ -7,13 +7,25 @@
 
 {% block content %}
 
-    {% formfield player.name with label="Фамилия Имя Отчество" %}
+    {% formfield player.mobile with label="Номер мобильного телефона" %}
 
     {% formfield player.age with label="Возраст" %}
 
     {% formfield player.sex with label="Пол" %}
 
-    {% formfield player.budget with label="В течение последнего года Ваш ежемесячный бюджет (в рублях) составлял:" %}
+    {% formfield player.univ %}
+
+    {% formfield player.study %}
+
+    {% formfield player.city %}
+
+    {% formfield player.yearsinmsc %}
+
+    {% formfield player.fin_income %}
+
+    {% formfield player.riskat %}
+
+    {% formfield player.satis %}
 
       <p>
         Нажмите на кнопку "Next" для завершения эксперимента

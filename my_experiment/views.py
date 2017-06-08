@@ -635,10 +635,8 @@ class Discount_M6(Page):
         self.player.df6c09_pay = df_payment(self.player.df6c09, 5, 8)
         self.player.df6c10_pay = df_payment(self.player.df6c10, 5, 9)
 
-        self.player.risk_payoff = int(round((Constants.conv_multiplier *
-                              (1 - math.exp(Constants.conv_power_multiplier * self.player.risk_P1_pay)))))
-        self.player.df_payoff = int(round((Constants.conv_multiplier *
-                              (1 - math.exp(Constants.conv_power_multiplier * self.player.df_pay)))))
+        self.player.risk_payoff = int(self.player.risk_P1_pay/15)
+        self.player.df_payoff = int(self.player.df_pay/15)
         self.player.payoff = self.player.df_payoff + self.player.risk_payoff
 
         self.participant.vars['payoff_risk'] = self.player.risk_payoff
@@ -679,7 +677,7 @@ class Instr_aft_S(Page):
 
 class Wait_aft_P1_res(WaitPage):
     wait_for_all_players = True
-    title_text = "Спасибо за выполнение Части 2, ожидайте, пока остальные участники закончат"
+    title_text = "Благодарим за выполнение Части 1, ожидайте, пока остальные участники закончат"
     body_text = "После того, как все участники закончат задание, мы приступим к следующей части эксперимента"
 
 class Instr_aft_P1_res(Page):
@@ -687,7 +685,7 @@ class Instr_aft_P1_res(Page):
 
 class Wait_aft_Res(WaitPage):
     wait_for_all_players = True
-    title_text = "Спасибо за выполнение Части 3, ожидайте, пока остальные участники закончат"
+    title_text = "Благодарим за выполнение Части 2, ожидайте, пока остальные участники закончат"
     body_text = "После того, как все участники закончат задание, мы приступим к следующей части эксперимента"
 
 class Instr_aft_Res(Page):
