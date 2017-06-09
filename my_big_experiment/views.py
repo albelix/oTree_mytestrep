@@ -88,7 +88,7 @@ class FinalResultsPage(Page):
 
 class Start(Page):
     form_model = models.Player
-    form_fields = ['mobile', 'age', 'sex',
+    form_fields = ['age', 'sex',
                    'city', 'yearsinmsc', 'univ', 'study', 'riskat', 'fin_income', 'satis' ]
     def is_displayed(self):
         return (self.round_number % 12) == 0

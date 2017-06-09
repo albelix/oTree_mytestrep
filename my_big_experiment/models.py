@@ -140,4 +140,4 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal()
     )
 
-    mobile = models.CharField()
+ #   mobile = models.CharField()
