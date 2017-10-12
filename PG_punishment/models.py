@@ -172,7 +172,7 @@ class Player(BasePlayer):
                 self.pun=sum([p.pun_5 for p in self.group.get_players() if p.id_in_group != 5])
                 print('p.payoff_is', self.pun)
         #self.puncost = sum([p.pun for p in self.subsession.get_players()])*0.2
-    self.puncost = (self.pun_1 + self.pun_2 + self.pun_3 + self.pun_4 + self.pun_5)*0.2
+            self.puncost = (p.pun_1 + p.pun_2 + p.pun_3 + p.pun_4 + p.pun_5)*0.2
     for p in self.group.get_players():
         print('p.payoff_is', p.puncost)
 
