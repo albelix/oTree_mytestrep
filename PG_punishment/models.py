@@ -173,8 +173,8 @@ class Player(BasePlayer):
                 print('p.payoff_is', self.pun)
         #self.puncost = sum([p.pun for p in self.subsession.get_players()])*0.2
             self.puncost = (p.pun_1 + p.pun_2 + p.pun_3 + p.pun_4 + p.pun_5)*0.2
-    for p in self.group.get_players():
-        print('p.payoff_is', p.puncost)
+        # for p in self.group.get_players():
+        #     print('p.payoff_is', p.puncost)
 
     def my_method_1(self):
         self.summy_contribution = sum([p.contribution for p in self.in_all_rounds()])
