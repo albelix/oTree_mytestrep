@@ -1,0 +1,48 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Результаты
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    За отказ от всех реформ проголосовали {{ final_reform_disapprovals }} из {{ Constants.players_per_group }} участников.
+    </p>
+
+    {% if final_reform_disapprovals >= 3 %}
+        <p>
+            Все реформы были отыграны назад.
+            <br />
+            Ваша прибыль составила {{ Constants.payoff_reforms_reversal }}.
+            <br />
+        </p>
+
+    {% else %}
+            Все реформы были приняты.
+            <br />
+            За все раунды ваша прибыль составила {{ player_payoff }}.
+        <p>
+    {%  endif %}
+{##}
+{#            {% if current_round != overthrow_round %}#}
+{##}
+{#                {% if coordinated_reforms_in_last_round > 0 %}#}
+{#                    В предыдущем раунде ваша группа успешно реализовала {{ coordinated_reforms_in_last_round }} реформ.#}
+{#                {% else %}#}
+{#                    В предыдущем раунде ваша группа не смогла договориться о количестве желаемых реформ, и в результате каждый игрок потерял {{ Constants.losses_from_chaos }} очков.#}
+{#                {% endif %}#}
+{##}
+{#            {% endif %}#}
+{#            В предыдущем раунде#}
+{#            <br />#}
+{#            В предыдыдущем раунде ваша прибыль составила {{ player_payoff_in_last_round }}.#}
+{#            <br />#}
+{#            За все раунды ваша прибыль составила {{ player_payoff }}.#}
+{#        </p>#}
+{#    {% endif %}#}
+    <p>
+        Это был финальный раунд. Спасибо за участие!
+    </p>
+{% endblock %}

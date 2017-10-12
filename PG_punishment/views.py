@@ -35,6 +35,7 @@ class PunPage(Page):
             'me_in_all_rounds_3': self.group.get_player_by_id(3).my_payoff,
             'me_in_all_rounds_4': self.group.get_player_by_id(4).my_payoff,
             'me_in_all_rounds_5': self.group.get_player_by_id(5).my_payoff,
+<<<<<<< HEAD
             'p1_contr': self.group.get_player_by_id(1).contribution,
             'p2_contr': self.group.get_player_by_id(2).contribution,
             'p3_contr': self.group.get_player_by_id(3).contribution,
@@ -46,15 +47,33 @@ class PunPage(Page):
 # class ResultsWaitPage1(WaitPage):
 #     def after_all_players_arrive(self):
 #         self.group.set_punpay()
+=======
+            'p1_contr': self.group.get_player_by_id(1).my_contribution,
+            'p2_contr': self.group.get_player_by_id(2).my_contribution,
+            'p3_contr': self.group.get_player_by_id(3).my_contribution,
+            'p4_contr': self.group.get_player_by_id(4).my_contribution,
+            'p5_contr': self.group.get_player_by_id(5).my_contribution,
+            'current_round': self.subsession.round_number
+        }
+
+class ResultsWaitPage1(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_punpay()
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
 
 class Results1(Page):
     wait_for_all_players=True
     def vars_for_template(self):
+<<<<<<< HEAD
         self.player.my_method()
+=======
+        self.player.my_method1()
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
 
 
 class Results(Page):
     def vars_for_template(self):
+<<<<<<< HEAD
         self.player.my_method()
         return {
             'my_profit': sum([p.my_payoff for p in self.player.in_all_rounds()]),
@@ -68,6 +87,21 @@ class Results(Page):
             'p3_sumcontr': self.group.get_player_by_id(3).contribution,
             'p4_sumcontr': self.group.get_player_by_id(4).contribution,
             'p5_sumcontr': self.group.get_player_by_id(5).contribution,
+=======
+        self.player.my_method1()
+        return {
+            'my_profit': sum([p.profit for p in self.player.in_all_rounds()]),
+            'my_in_all_rounds_1': self.group.get_player_by_id(1).my_profit,
+            'my_in_all_rounds_2': self.group.get_player_by_id(2).my_profit,
+            'my_in_all_rounds_3': self.group.get_player_by_id(3).my_profit,
+            'my_in_all_rounds_4': self.group.get_player_by_id(4).my_profit,
+            'my_in_all_rounds_5': self.group.get_player_by_id(5).my_profit,
+            'p1_sumcontr': self.group.get_player_by_id(1).summy_contribution,
+            'p2_sumcontr': self.group.get_player_by_id(2).summy_contribution,
+            'p3_sumcontr': self.group.get_player_by_id(3).summy_contribution,
+            'p4_sumcontr': self.group.get_player_by_id(4).summy_contribution,
+            'p5_sumcontr': self.group.get_player_by_id(5).summy_contribution,
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
             'current_round': self.subsession.round_number
         }
 
@@ -77,7 +111,11 @@ page_sequence = [
     ResultsWaitPage,
     Results0,
     PunPage,
+<<<<<<< HEAD
 #    ResultsWaitPage1,
+=======
+    ResultsWaitPage1,
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     Results1,
     Results
 ]

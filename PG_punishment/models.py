@@ -24,12 +24,19 @@ PG game with punishment
 class Constants(BaseConstants):
     name_in_url = 'PG_punishment'
     players_per_group = 5
+<<<<<<< HEAD
     num_rounds = 2
+=======
+    num_rounds = 8
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     endowment = c(100)
     lumpsum = c(160)
     efficiency_factor = 2
     contribution_limits = currency_range(0, endowment, 1) #define range of contribs
+<<<<<<< HEAD
     num_decisions_per_round = 2
+=======
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
 
 
 class Subsession(BaseSubsession):
@@ -54,6 +61,7 @@ class Group(BaseGroup):
 #        self.my_payoff = ([p.payoff for p in self.get_players()])
 #        self.mean_contribution=sum([p.contribution for p in self.get_players()])/5
         for p in self.get_players():
+<<<<<<< HEAD
             p.payoff = sum([ + Constants.endowment - p.contribution + self.individual_share,
             - (p.pun or 0),
             - (p.puncost or 0), ])
@@ -79,28 +87,58 @@ class Player(BasePlayer):
     punishment_sent = models.CurrencyField()
     punishment_received = models.CurrencyField()
 
+=======
+            p.payoff = Constants.endowment - p.contribution + self.individual_share
+
+
+# after punishment
+    def set_punpay(self):
+        for p in self.get_players():
+            p.profit = self.payoff - p.pun - p.puncost
+            print('p.payoff_is', p.profit)
+
+class Player(BasePlayer):
+    contribution = models.CurrencyField(doc="""The amount contributed by the player""", min=0,max=100) # choices=Constants.contribution_limits) #add this to see schedule of contribs
+    my_contribution = models.CurrencyField(doc="""The amount contributed by the player""", )
+    my_payoff = models.CurrencyField()
+    mean_contribution = models.CurrencyField()
+    pun=models.CurrencyField()
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     pun_1 = models.CurrencyField(min=0,max=4,initial=0)
     pun_2 = models.CurrencyField(min=0,max=4,initial=0)
     pun_3 = models.CurrencyField(min=0,max=4,initial=0)
     pun_4 = models.CurrencyField(min=0,max=4,initial=0)
     pun_5 = models.CurrencyField(min=0,max=4,initial=0)
     total_contribution = models.CurrencyField()
+<<<<<<< HEAD
 
     my_payoff = models.CurrencyField()
     mean_contribution = models.CurrencyField()
     pun=models.CurrencyField()
+=======
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     my_profit = models.CurrencyField()
     summy_contribution = models.CurrencyField(doc="""Total amount contributed by the player""")
     puncost = models.CurrencyField()
 
+<<<<<<< HEAD
     # before punishment
     def my_method(self):
         self.contribution = sum([p.contribution for p in self.in_all_rounds()])
         self.my_payoff = sum([p.payoff for p in self.in_all_rounds()])
+=======
+# before punishment
+    def my_method(self):
+        for p in self.group.get_players():
+            self.my_contribution = p.contribution
+        for p in self.group.get_players():
+            self.my_payoff = p.payoff
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
         self.mean_contribution=sum([p.contribution for p in self.group.get_players()])/5
 
 # after punishment
     def my_method_tim(self):
+<<<<<<< HEAD
 #        if self.id_in_group == 1:
             self.pun=sum([p.pun_1 for p in self.group.get_players() if p.id_in_group != 1])
             print('p.payoff_is', self.pun)
@@ -124,3 +162,28 @@ class Player(BasePlayer):
 #    def my_method_1(self):
 #        self.summy_contribution = sum([p.contribution for p in self.in_all_rounds()])
 #        self.my_profit = sum([p.profit for p in self.in_all_rounds()])
+=======
+        if self.id_in_group == 1:
+            self.pun=sum([p.pun_1 for p in self.group.get_players() if p.id_in_group != 1])
+            print('p.payoff_is', self.pun)
+        if self.id_in_group == 2:
+            self.pun=sum([p.pun_2 for p in self.group.get_players() if p.id_in_group != 2])
+            print('p.payoff_is', self.pun)
+        if self.id_in_group == 3:
+            self.pun=sum([p.pun_3 for p in self.group.get_players() if p.id_in_group != 3])
+            print('p.payoff_is', self.pun)
+        if self.id_in_group == 4:
+            self.pun=sum([p.pun_4 for p in self.group.get_players() if p.id_in_group != 4])
+            print('p.payoff_is', self.pun)
+        else:
+            self.pun=sum([p.pun_5 for p in self.group.get_players() if p.id_in_group != 5])
+            print('p.payoff_is', self.pun)
+        #self.puncost = sum([p.pun for p in self.subsession.get_players()])*0.2
+        self.puncost = (self.pun_1 + self.pun_2 + self.pun_3 + self.pun_4 + self.pun_5)*0.2
+        for p in self.group.get_players():
+            print('p.payoff_is', p.puncost)
+
+    def my_method_1(self):
+        self.summy_contribution = sum([p.contribution for p in self.in_all_rounds()])
+        self.my_profit = sum([p.profit for p in self.in_all_rounds()])
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf

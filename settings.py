@@ -10,6 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
+<<<<<<< HEAD
 # Following is the original code
 # if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
 #    DEBUG = False
@@ -19,6 +20,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # print('*****************', DEBUG)
 # end of the original code
 DEBUG = False
+=======
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+    DEBUG = False
+else:
+    DEBUG = True
+print('*****************', environ.get('OTREE_PRODUCTION'))
+print('*****************', DEBUG)
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
 # don't share this with anybody.
 SECRET_KEY = 'sin7pb_5zoce5g1zxnx7-!cc13yc*d#it0wl!snn$cf=^(%&fh'
 
@@ -334,6 +343,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'PG_standard',
+<<<<<<< HEAD
         'display_name': "Базовая игра",
         'num_demo_participants': 35,
         'app_sequence': ['PG_standard', 'PG_threshold', 'my_survey'],
@@ -342,12 +352,26 @@ SESSION_CONFIGS = [
     {
         'name': 'PG_try',
         'display_name': "Групповая игра (драфт)",
+=======
+        'display_name': "<Базовая игра",
+        'num_demo_participants': 5,
+        'app_sequence': ['PG_standard'],
+        #'use_browser_bots': True
+    },
+    {
+        'name': 'PG_try',
+        'display_name': "Групповая игра",
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
         'num_demo_participants': 5,
         'app_sequence': ['PG_try'],
     },
     {
         'name': 'PG_punishment',
+<<<<<<< HEAD
         'display_name': "Пороговая игра с наказаниями (драфт)",
+=======
+        'display_name': "Пороговая игра с наказаниями",
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
         'num_demo_participants': 5,
         'app_sequence': ['PG_punishment'],
     },
@@ -357,6 +381,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['PG_threshold'],
     },
+<<<<<<< HEAD
 #    {
 #        'name': 'reform_AB',
 #        'display_name': "Реформы",
@@ -371,6 +396,22 @@ SESSION_CONFIGS = [
 #        'app_sequence': ['reform_ABadd'],
 #        'use_browser_bots': True
 #    },
+=======
+    {
+        'name': 'reform_AB',
+        'display_name': "Реформы",
+        'num_demo_participants': 5,
+        'app_sequence': ['reform_AB', 'my_survey'],
+        #'use_browser_bots': True
+    },
+    {
+        'name': 'reform_ABadd',
+        'display_name': "Реформы доп",
+        'num_demo_participants': 5,
+        'app_sequence': ['reform_ABadd'],
+        #'use_browser_bots': True
+    },
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     {
         'name': 'my_experiment',
         'display_name': "Enjoy!",

@@ -23,7 +23,11 @@ PG game for EDots
 class Constants(BaseConstants):
     name_in_url = 'PG_standard'
     players_per_group = 5
+<<<<<<< HEAD
     num_rounds = 8
+=======
+    num_rounds = 3
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
     endowment = c(100)
     lumpsum = c(160)
     efficiency_factor = 2
@@ -118,7 +122,10 @@ class Player(BasePlayer):
         #     print('*******my_payoff is', p.contr)
 
                 # def role(self):
+<<<<<<< HEAD
 
+=======
+>>>>>>> 45c3e75e6762835d47189070502597246b3027cf
                 #    if self.id_in_group == 1:
                 #        self.idind = 1
                 #        self.par1 = self.my_payoff(1)
