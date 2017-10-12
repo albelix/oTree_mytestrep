@@ -1,0 +1,153 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Лотерея в условиях риска часть 2
+{% endblock %}
+
+{% block content %}
+
+    <h4>Instructions</h4>
+    <p>
+        Here choose lotteries that you like the most.
+        Choices will affect further oucomes
+
+    </p>
+
+    <p>
+        At the end, a random round will be chosen for payment.
+    </p>
+
+    <table class="table" border="2">
+      <tr>
+        <td colspan=4 style="text-align:center;">Лотерея A</td>
+        <td colspan=4 style="text-align:center;">Лотерея B</td>
+        <td rowspan=2 style="text-align:center;" width="100">Ваш выбор</td>
+      </tr>
+      <tr>
+          <td style="text-align:center;">Выигрыш 1</td><td style="text-align:center;">Вероятность выигрыша 1</td>
+          <td style="text-align:center;">Выигрыш 2</td><td style="text-align:center;">Вероятность выигрыша 2</td>
+          <td style="text-align:center;">Выигрыш 1</td><td style="text-align:center;">Вероятность выигрыша 1</td>
+          <td style="text-align:center;">Выигрыш 2</td><td style="text-align:center;">Вероятность выигрыша 2</td>
+
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p01 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p01 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p01 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p01 }}</td>
+        <td>{% formfield player.risk11 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p02 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p02 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p02 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p02 }}</td>
+        <td>{% formfield player.risk12 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p03 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p03 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p03 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p03 }}</td>
+        <td>{% formfield player.risk13 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p04 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p04 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p04 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p04 }}</td>
+        <td>{% formfield player.risk14 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p05 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p05 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p05 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p05 }}</td>
+        <td>{% formfield player.risk15 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p06 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p06 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p06 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p06 }}</td>
+        <td>{% formfield player.risk16 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p07|floatformat }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p07|floatformat }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p07|floatformat }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p07|floatformat }}</td>
+        <td>{% formfield player.risk17 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p08|floatformat }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p08|floatformat }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p08|floatformat }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p08|floatformat }}</td>
+        <td>{% formfield player.risk18 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p09|floatformat }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p09|floatformat }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p09|floatformat }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p09|floatformat }}</td>
+        <td>{% formfield player.risk19 with label="" %}</td>
+      </tr>
+      <tr>
+        <td>{{ Constants.win_pay_A_b }}</td>
+        <td>{{ win_p10 }}</td>
+        <td>{{ Constants.lose_pay_A_b }}</td>
+        <td>{{ lose_p10 }}</td>
+        <td>{{ Constants.win_pay_B_b }}</td>
+        <td>{{ win_p10 }}</td>
+        <td>{{ Constants.lose_pay_B_b }}</td>
+        <td>{{ lose_p10 }}</td>
+        <td>{% formfield player.risk20 with label="" %}</td>
+      </tr>
+
+    </table>
+
+    <p>
+        Намите на кнопку "Next" для перехода к результатам раунда
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Общественное благо - результаты
+{% endblock %}
+
+{% block content %}
+<p>
+
+{% include 'my_public_goods/Instructions.html' %}
+
+    В начале раунда у вас было {{ Constants.endowment }}.
+<br> <br>
+    Вы внесли на общий счет {{ player.contribution }}.
+<br> <br>
+    Всего ваша группа внесла на общий счет {{ group.total_contribution }}.
+<br> <br>
+    Ваша доля доходов с общего счета составила {{ group.individual_share }}.
+<br> <br>
+    Ваш доход в текущем раунде равен {{ player.payoff }}.
+</p>
+
+    {% next_button %}
+{% endblock %}
+
+

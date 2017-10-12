@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Перед началом Части 2 эксперимента ознакомьтесь с инструкцией
+{% endblock %}
+
+{% block content %}
+     <p>
+        Все участники закончили выполнение Части 1. Перед началом Части 2 наблюдающий зачитает Вам инструкцию.
+     </p>
+
+    {% next_button %}
+
+{% endblock %}

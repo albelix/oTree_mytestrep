@@ -1,0 +1,92 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Результаты: Часть 1
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Графу "Исход игры стоит инерпретировать следующим образом: <br>
+    "W" означает, что в выбранной Вами лотерее выпало большее вознаграждение - 200 рублей, если Вы выбрали Лотерею А, 400 рублей, если Вы выбрали Лотерею В; <br>
+    "L" означает, что в выбранной Вами лотерее выпало меньшее вознаграждение - 160 рублей, если Вы выбрали Лотерею А, 10 рублей, если Вы выбрали Лотерею В;
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Номер пары</th>
+            <th>Выбор игрока</th>
+            <th>Исход игры</th>
+            <th>Выигрыш раунда</th>
+        </tr>
+            <tr>
+                <td>1</td><td>{{ player.risk01 }}</td><td>{{ player.risk01_res }}</td><td>{{ player.risk01_pay }}</td>
+            </tr>
+            <tr>
+                <td>2</td><td>{{ player.risk02 }}</td><td>{{ player.risk02_res }}</td><td>{{ player.risk02_pay }}</td>
+            </tr>
+            <tr>
+                <td>3</td><td>{{ player.risk03 }}</td><td>{{ player.risk03_res }}</td><td>{{ player.risk03_pay }}</td>
+            </tr>
+            <tr>
+                <td>4</td><td>{{ player.risk04 }}</td><td>{{ player.risk04_res }}</td><td>{{ player.risk04_pay }}</td>
+            </tr>
+            <tr>
+                <td>5</td><td>{{ player.risk05 }}</td><td>{{ player.risk05_res }}</td><td>{{ player.risk05_pay }}</td>
+            </tr>
+            <tr>
+                <td>6</td><td>{{ player.risk06 }}</td><td>{{ player.risk06_res }}</td><td>{{ player.risk06_pay }}</td>
+            </tr>
+            <tr>
+                <td>7</td><td>{{ player.risk07 }}</td><td>{{ player.risk07_res }}</td><td>{{ player.risk07_pay }}</td>
+            </tr>
+            <tr>
+                <td>8</td><td>{{ player.risk08 }}</td><td>{{ player.risk08_res }}</td><td>{{ player.risk08_pay }}</td>
+            </tr>
+            <tr>
+                <td>9</td><td>{{ player.risk09 }}</td><td>{{ player.risk09_res }}</td><td>{{ player.risk09_pay }}</td>
+            </tr>
+            <tr>
+                <td>10</td><td>{{ player.risk10 }}</td><td>{{ player.risk10_res }}</td><td>{{ player.risk10_pay }}</td>
+            </tr>
+               <tr>
+                <td>11</td><td>{{ player.risk11 }}</td><td>{{ player.risk11_res }}</td><td>{{ player.risk11_pay }}</td>
+            </tr>
+            <tr>
+                <td>12</td><td>{{ player.risk12 }}</td><td>{{ player.risk12_res }}</td><td>{{ player.risk12_pay }}</td>
+            </tr>
+            <tr>
+                <td>13</td><td>{{ player.risk13 }}</td><td>{{ player.risk13_res }}</td><td>{{ player.risk13_pay }}</td>
+            </tr>
+            <tr>
+                <td>14</td><td>{{ player.risk14 }}</td><td>{{ player.risk14_res }}</td><td>{{ player.risk14_pay }}</td>
+            </tr>
+            <tr>
+                <td>15</td><td>{{ player.risk15 }}</td><td>{{ player.risk15_res }}</td><td>{{ player.risk15_pay }}</td>
+            </tr>
+            <tr>
+                <td>16</td><td>{{ player.risk16 }}</td><td>{{ player.risk16_res }}</td><td>{{ player.risk16_pay }}</td>
+            </tr>
+            <tr>
+                <td>17</td><td>{{ player.risk17 }}</td><td>{{ player.risk17_res }}</td><td>{{ player.risk17_pay }}</td>
+            </tr>
+            <tr>
+                <td>18</td><td>{{ player.risk18 }}</td><td>{{ player.risk18_res }}</td><td>{{ player.risk18_pay }}</td>
+            </tr>
+            <tr>
+                <td>19</td><td>{{ player.risk19 }}</td><td>{{ player.risk19_res }}</td><td>{{ player.risk19_pay }}</td>
+            </tr>
+            <tr>
+                <td>20</td><td>{{ player.risk20 }}</td><td>{{ player.risk20_res }}</td><td>{{ player.risk20_pay }}</td>
+            </tr>
+    </table>
+
+
+    <p>
+        Нажмите на кнопку "Next" для перехода к Части 2
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

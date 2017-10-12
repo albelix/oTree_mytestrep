@@ -1,0 +1,277 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Часть 1
+{% endblock %}
+
+{% block content %}
+
+    <p style="text-align: center">Вы можете ознакомиться с подробным описанием Части 1 в раздаточном материале</p>
+
+    <table class="table" border="2" style="width: 100%">
+      <tr>
+        <td rowspan="2" style="text-align:center;">Номер</td>
+        <td colspan=4 style="text-align:center;">Лотерея A</td>
+        <td rowspan=2 style="text-align:center;" width="100">Ваш выбор</td>
+        <td colspan=4 style="text-align:center;">Лотерея B</td>
+      </tr>
+      <tr>
+          <td style="text-align:center;">Выигрыш 1</td><td style="text-align:center;">Вероятность выигрыша 1</td>
+          <td style="text-align:center;">Выигрыш 2</td><td style="text-align:center;">Вероятность выигрыша 2</td>
+          <td style="text-align:center;">Выигрыш 1</td><td style="text-align:center;">Вероятность выигрыша 1</td>
+          <td style="text-align:center;">Выигрыш 2</td><td style="text-align:center;">Вероятность выигрыша 2</td>
+
+      </tr>
+      <tr>
+          <td>1</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p01|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p01|floatformat:2 }}</td>
+        <td>{% formfield player.risk01  %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p01|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p01|floatformat:2 }}</td>
+
+      </tr>
+      <tr>
+          <td>2</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p02|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p02|floatformat:2 }}</td>
+        <td>{% formfield player.risk02 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p02|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p02|floatformat:2 }}</td>
+
+      </tr>
+      <tr>
+          <td>3</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p03|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p03|floatformat:2 }}</td>
+        <td>{% formfield player.risk03 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p03|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p03|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>4</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p04|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p04|floatformat:2 }}</td>
+        <td>{% formfield player.risk04 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p04|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p04|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>5</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p05|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p05|floatformat:2 }}</td>
+        <td>{% formfield player.risk05 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p05|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p05|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>6</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p06|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p06|floatformat:2 }}</td>
+        <td>{% formfield player.risk06 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p06|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p06|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>7</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p07|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p07|floatformat:2 }}</td>
+        <td>{% formfield player.risk07 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p07|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p07|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>8</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p08|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p08|floatformat:2 }}</td>
+        <td>{% formfield player.risk08 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p08|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p08|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>9</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p09|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p09|floatformat:2 }}</td>
+        <td>{% formfield player.risk09 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p09|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p09|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>10</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p10|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p10|floatformat:2 }}</td>
+        <td>{% formfield player.risk10 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p10|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p10|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>11</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p11|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p11|floatformat:2 }}</td>
+        <td>{% formfield player.risk11 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p11|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p11|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>12</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p12|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p12|floatformat:2 }}</td>
+        <td>{% formfield player.risk12 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p12|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p12|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>13</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p13|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p13|floatformat:2 }}</td>
+        <td>{% formfield player.risk13 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p13|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p13|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>14</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p14|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p14|floatformat:2 }}</td>
+        <td>{% formfield player.risk14 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p14|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p14|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>15</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p15|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p15|floatformat:2 }}</td>
+        <td>{% formfield player.risk15 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p15|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p15|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>16</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p16|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p16|floatformat:2 }}</td>
+        <td>{% formfield player.risk16 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p16|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p16|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>17</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p17|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p17|floatformat:2 }}</td>
+        <td>{% formfield player.risk17 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p17|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p17|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>18</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p18|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p18|floatformat:2 }}</td>
+        <td>{% formfield player.risk18 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p18|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p18|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>19</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p19|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p19|floatformat:2 }}</td>
+        <td>{% formfield player.risk19 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p19|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p19|floatformat:2 }}</td>
+      </tr>
+      <tr>
+          <td>20</td>
+        <td>{{ Constants.win_pay_A_a }}</td>
+        <td>{{ win_p20|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_A_a }}</td>
+        <td>{{ lose_p20|floatformat:2 }}</td>
+        <td>{% formfield player.risk20 with label="" %}</td>
+        <td>{{ Constants.win_pay_B_a }}</td>
+        <td>{{ win_p20|floatformat:2 }}</td>
+        <td>{{ Constants.lose_pay_B_a }}</td>
+        <td>{{ lose_p20|floatformat:2 }}</td>
+      </tr>
+
+    </table>
+
+    <p>
+        Намите на кнопку "Next" для перехода к результатам раунда
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

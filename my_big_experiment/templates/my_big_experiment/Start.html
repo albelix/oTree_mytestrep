@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Часть 4
+{% endblock %}
+
+{% block content %}
+
+
+    {% formfield player.age with label="Возраст" %}
+
+    {% formfield player.sex with label="Пол" %}
+
+    {% formfield player.univ %}
+
+    {% formfield player.study %}
+
+    {% formfield player.city %}
+
+    {% formfield player.yearsinmsc %}
+
+    {% formfield player.fin_income %}
+
+    {% formfield player.riskat %}
+
+    {% formfield player.satis %}
+
+      <p>
+        Нажмите на кнопку "Next" для завершения эксперимента
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

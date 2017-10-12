@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    {{description_text}}
+{% endblock %}
+
+{% block content %}
+ <p>
+        Нажмите кнопку "Next" для перехода к следующему разделу
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+

@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Результаты
+{% endblock %}
+
+{% block content %}
+
+<table class="table">
+
+    <tr>
+        <th colspan="4" style="text-align: center">Ваш выигрыш - Часть 1</th>
+    </tr>
+    <tr>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th>Исход</th><th style="color:red;">Ваш выигрыш</th>
+    </tr>
+    <tr>
+            <td>{{ risk_num }}</td><td>{{ risk_sel }}</td><td>{{ risk_won }}</td><td style="color:red;">{{ risk }}</td>
+    </tr>
+
+</table>
+
+<table class="table">
+
+    <tr>
+        <th colspan="3" style="text-align: center">Ваш выигрыш - Часть 2</th>
+    </tr>
+    <tr>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th style="color:red;">Ваш выигрыш</th>
+    </tr>
+    <tr>
+            <td>{{ df_num }}</td> <td>{{ df_sel }}</td><td style="color:red;">{{ df }}</td>
+    </tr>
+
+</table>
+
+
+<table class="table" style="text-align: center">
+
+    <tr>
+        <th colspan="3" style="text-align: center">Ваш выигрыш - Часть 3</th>
+    </tr>
+    <tr>
+            <th style="text-align: center">Номер раунда</th>
+            <th style="text-align: center">Сколько игровых очков Вы выбрали для перевода в рубли</th>
+            <th style="color:red; text-align: center">Ваш выигрыш</th>
+    </tr>
+    <tr>
+            <td>{{ player.paying_period }}</td><td>{{ random_consumption }}</td>
+            <td style="color:red;">{{ player.payoff }}</td>
+    </tr>
+
+</table>
+
+
+<table class="table">
+
+    <tr>
+        <th colspan="2" style="text-align: center">Ваш общий выигрыш за все части игры</th>
+    </tr>
+    <tr>
+            <th style="color:red;">Ваш выигрыш за игру</th><td style="color:red;">{{ player.participant.payoff }}</td>
+    </tr>
+
+</table>
+
+
+    {% next_button %}
+{% endblock %}

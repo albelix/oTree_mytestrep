@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Результаты эксперимента
+{% endblock %}
+
+{% block content %}
+<table class="table">
+
+    <tr>
+        <th colspan="4" style="text-align: center">Ваш выигрыш - Часть 1</th>
+    </tr>
+    <tr>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th>Исход</th><th style="color:red;">Ваш выигрыш за игру</th>
+    </tr>
+    <tr>
+            <td>{{ player.risk_P1_nat }}</td><td>{{ player.risk_P1_sel }}</td><td>{{ player.risk_P1_res }}</td>
+            <td style="color:red;">{{ player.risk_P1_pay }}</td>
+    </tr>
+
+</table>
+
+<table class="table">
+
+    <tr>
+        <th colspan="3" style="text-align: center">Ваш выигрыш - Часть 2</th>
+    </tr>
+    <tr>
+            <th>Номер лотереи</th><th>Выбор игрока</th><th style="color:red;">Ваш выигрыш за игру</th>
+    </tr>
+    <tr>
+            <td>{{ player.df_nat }}</td> <td>{{ player.df_sel }}</td><td style="color:red;">{{ player.df_pay }}</td>
+    </tr>
+
+</table>
+
+    <p>
+        Нажмите на кнопку "Next" для перехода к Части 3
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+

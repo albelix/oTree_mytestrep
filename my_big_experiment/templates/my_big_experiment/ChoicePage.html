@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Раунд {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+
+    <h5 style="text-align: center">Процесс формирования дохода</h5>
+
+    <img src="{% static "my_big_experiment/formula.png" %}" />
+
+    <p>
+
+    </p>
+
+    <table class="table" border="2" style="text-align: center">
+      <th colspan="3" style="text-align: center">Данные текущего раунда (в игровых очках)</th>
+      <tr>
+        <th style="text-align: center">Сбережения</th>
+        <th style="text-align: center">Доход за период</th>
+        <th style="text-align: center">Сколько игровых очков Вы хотите приобрести?</th>
+      </tr>
+      <tr>
+          <td>{{ player.savings }}</td>
+          <td>{{ player.income }}</td>
+          <td align="middle">{% formfield player.consumption with label="" %}</td>
+      </tr>
+    </table>
+
+    {% next_button %}
+
+    <table class="table" style="text-align: center">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <th colspan="4" style="text-align: center">Данные за прошлые раунды (в игровых очках)</th>
+        <tr>
+             <th style="text-align: center">Номер раунда</th>
+             <th style="text-align: center">Сбережения</th>
+             <th style="text-align: center">Доход</th>
+             <th style="text-align: center">Вы сконвертировали в рубли</th>
+
+         </tr>
+         {% for p in player_in_previous_rounds %}
+             <tr>
+                 <td>{{ p.round_number }}</td>
+                 <td>
+                     {{ p.savings }}
+                 </td>
+                 <td>
+                     {{ p.income }}
+                 </td>
+                 <td>
+                     {{ p.consumption }}
+                 </td>
+             </tr>
+         {% endfor %}
+    </table>
+    <p>
+        Намите на кнопку "Next" для перехода к результатам раунда
+    </p>
+
+
+
+{% endblock %}

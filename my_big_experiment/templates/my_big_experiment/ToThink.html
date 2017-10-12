@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    В раунде {{ player.round_number }} вы приняли следующие решения
+{% endblock %}
+
+{% block content %}
+
+    <table class="table">
+    <tr>
+        <th>Ваш доход был</th><th>Вы использовали очков</th><th>Ваши сбережения составили</th><th></th>
+    </tr>
+    <tr>
+        <td>{{ income_was }}</td><td>{{ consumed }}</td><td>{{ saved }}</td>
+    </tr>
+    </table>
+
+    <p style="text-align: center;" >
+    В случае, если этот раунд будет выбран к выплате, Вам выплатят
+    </p>
+    <p style="text-align: center; color: red">
+    {{ payoff }} рублей через
+
+    {% if player.round_number < 7%}
+        {{ player.round_number }}
+        {% if player.round_number == 1 %}
+            месяц
+        {% else %}
+            месяца(ев)
+        {% endif %}
+    {% else %}
+        {{ month }}
+        {% if player.round_number == 7 %}
+            месяц
+        {% else %}
+            месяца(ев)
+        {% endif %}
+    {% endif %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
