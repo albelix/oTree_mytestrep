@@ -335,7 +335,7 @@ SESSION_CONFIGS = [
     {
         'name': 'PG_standard',
         'display_name': "Базовая игра",
-        'num_demo_participants': 35,
+        'num_demo_participants': 30,
         'app_sequence': ['PG_standard', 'PG_threshold', 'my_survey'],
         'use_browser_bots': False
     },
