@@ -93,10 +93,6 @@ class Player(BasePlayer):
     mean_contribution = models.CurrencyField()
     puncost = models.CurrencyField()
 
-    for p in self.get_players():
-            p.payoff = sum([+ Constants.endowment - p.contribution + self.individual_share - (p.pun or 0), - (p.puncost or 0), ])
-
-
 # after punishment
     def set_punpay(self):
         for p in self.get_players():
