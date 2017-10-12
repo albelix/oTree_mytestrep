@@ -1,33 +1,14 @@
-from __future__ import division
-
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-# from tables import group
-# from otree.api import (
-#     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-#     Currency as c, currency_range
-# )
-# from tables import group
-
-
-
-# import random
-
-from otree.constants import BaseConstants
-from otree.models import BaseSubsession, BaseGroup, BasePlayer
-
-from otree.db import models
-# from otree import widgets
-from otree.common import Currency as c, currency_range, safe_json
+from random import random, randint
 
 author = 'Alexis Belianin'
 
 doc = """
 PG game for EDots
 """
-
 
 class Constants(BaseConstants):
     name_in_url = 'PG_threshold'
@@ -41,7 +22,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    flood = models.FloatField()
+    def before_session_starts(self):
+        for p in self.get_players():
+            Group.flood = randint(1, Constants.threshold)/Constants.threshold
 
 
 class Group(BaseGroup):
@@ -56,6 +40,7 @@ class Group(BaseGroup):
     # p2_payoff = models.CurrencyField()
     # p3_payoff = models.CurrencyField()
     global_contribution=models.CurrencyField()
+    success=models.BooleanField()
     # glob_cont=models.CurrencyField()
 
     # def __init__(self):
@@ -68,6 +53,11 @@ class Group(BaseGroup):
         self.individual_share = self.total_contribution * Constants.efficiency_factor / Constants.players_per_group
         self.global_contribution = sum([p.total_contribution for p in self.in_all_rounds()])
         self.current_share=self.global_contribution*100 / Constants.threshold
+        # if Group.flood<self.current_share:
+        #     self.success = 1
+        # else:
+        #     self.success = 0
+
         for p in self.get_players():
             p.payoff = Constants.endowment - p.contribution # + self.individual_share
             # p1 = self.get_player_by_id(1)
@@ -113,6 +103,7 @@ class Player(BasePlayer):
     total_contribution = models.CurrencyField()
     my_contribution = models.CurrencyField(doc="""The amount contributed by the player""", )
     my_payoff = models.CurrencyField()
+    my_cut_payoff = models.CurrencyField()
     # prof = models.CurrencyField()
     # contr = models.CurrencyField()
     # par1 = models.IntegerField()
@@ -122,6 +113,7 @@ class Player(BasePlayer):
     def my_method(self):
         self.my_contribution = sum([p.contribution for p in self.in_all_rounds()])
         self.my_payoff = sum([p.payoff for p in self.in_all_rounds()])
+        self.my_cut_payoff = self.my_payoff*0.25
         return self.subsession.round_number
         #        self.others_choice = self.get_others_in_group()[1].my_payoff
         # for p in self.in_all_rounds():

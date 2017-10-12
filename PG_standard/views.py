@@ -69,9 +69,22 @@ class Results(Page):
 #        #    'global_contribution': sum([p.total_contribution for p in self.player.in_all_rounds()])
 #        #}
 
+class ResultsSummary(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        return {
+            'total_payoff': sum(
+                [p.payoff for p in self.player.in_all_rounds()]),
+            'player_in_all_rounds': self.player.in_all_rounds(),
+        }
+
+
 page_sequence = [
     Contribution,
     ResultsWaitPage,
     Results0,
-    Results
+    Results,
+    ResultsSummary
 ]

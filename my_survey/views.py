@@ -11,10 +11,10 @@ class MyPage(Page):
                    'height']
 
 
-class City(Page):
-    form_model = models.Player
-    form_fields = ['city',
-                   'yearsinmsc', 'mscyourcity', 'achieve', 'deput']
+# class City(Page):
+#     form_model = models.Player
+#     form_fields = ['city',
+#                    'yearsinmsc', 'mscyourcity', 'achieve', 'deput']
 
 
 class Yourself(Page):
@@ -32,26 +32,27 @@ class Yourself(Page):
                    'riskHL8',
                    'riskHL9',
                    'riskHL10',
-                   'income',
+#                   'income',
                    'satis',
-                   'trust']
+                   'trust',
+                   'freedom']
 
-class polit(Page):
-    form_model = models.Player
-    form_fields = ['freedom',
-                       'politics',
-                       'leftright',
-                       'owner',
-                       'responsibility',
-                       'democracy',
-                        'democracy_today',
-                        'renovation',
-                        'attitudes']
+# class polit(Page):
+#     form_model = models.Player
+#     form_fields = ['freedom',
+#                        'politics',
+#                        'leftright',
+#                        'owner',
+#                        'responsibility',
+#                        'democracy',
+#                         'democracy_today',
+#                         'renovation',
+#                         'attitudes']
 
     def before_next_page(self):
         self.player.set_payoff()
 
 
 page_sequence = [
-    MyPage, City, Yourself, polit
-   ]
+    MyPage, Yourself #, polit, City,
+]
