@@ -12,9 +12,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
 # Following is the original code
 # if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-#    DEBUG = False
+#     DEBUG = False
 # else:
-#    DEBUG = True
+#     DEBUG = True
 # print('*****************', environ.get('OTREE_PRODUCTION'))
 # print('*****************', DEBUG)
 # end of the original code
@@ -335,7 +335,7 @@ SESSION_CONFIGS = [
     {
         'name': 'PG_standard',
         'display_name': "Базовая игра",
-        'num_demo_participants': 30,
+        'num_demo_participants': 10,
         'app_sequence': ['PG_standard', 'PG_threshold', 'my_survey'],
         'use_browser_bots': False
     },
@@ -345,12 +345,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         'app_sequence': ['PG_try'],
     },
-    {
-        'name': 'PG_punishment',
-        'display_name': "Пороговая игра с наказаниями (драфт)",
-        'num_demo_participants': 5,
-        'app_sequence': ['PG_punishment'],
-    },
+    # {
+    #     'name': 'PG_punishment',
+    #     'display_name': "Пороговая игра с наказаниями (драфт)",
+    #     'num_demo_participants': 5,
+    #     'app_sequence': ['PG_punishment'],
+    # },
     {
         'name': 'PG_threshold',
         'display_name': "Пороговая игра",
