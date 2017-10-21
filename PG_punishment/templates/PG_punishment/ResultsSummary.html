@@ -2,7 +2,7 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Принятие решений II - результаты для участника {{ player.id_in_group }}
+    Принятие решений III - результаты для участника {{ player.id_in_group }}
 {% endblock %}
 
 {% block content %}
@@ -21,27 +21,30 @@
 
     <p>
 {#        The paying round was {{ paying_round }}.#}
-        В этой игре вы заработали {{ total_payoff_full }} рублей.
+        В этой игре вы заработали {{ total_payoff}} рублей.
 
         <br> <br>
 
-        Ваша накопленная сумма на общем счету составила {{ group.global_contribution }} из {{ Constants.threshold }} ({{ group.current_share }}%).
+        Вы внесли на общий счет {{ total_contribution}}
 
         <br> <br>
 
+        К вам были применены вычеты на общую сумму {{ total_punishment }}
+
+        <br> <br>
+        На ваши вычеты вы потратили {{ total_puncost }}
 {#        {% if global.outcome == 1 %}#}
-            Если вам повезет, вы заработаете {{ total_payoff_full }}
 {#        {% else %}#}
 
         <br> <br>
 
-        Если вам <strong> не </strong> повезет, вы заработете {{ total_payoff_cut }}
+        Ваш итоговый выигрыш составил {{ total_profit}}
 {#        {% endif %}#}
 
         <br> <br>
 
-        Положитесь на волю случая и пожалуйста, дождитесь окончания!
+        Пожалуйста, дождитесь окончания!
     </p>
 
-
+    {% next_button %}
 {% endblock %}
