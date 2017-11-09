@@ -138,7 +138,7 @@ ROOMS = [
     {
         'name': 'lab01',
         'display_name': 'Эксперимент',
-        'participant_label_file': 'PlayerList.txt',
+        'participant_label_file': 'PlayerList35.txt',
         'use_secure_urls': False,
     },
     {
