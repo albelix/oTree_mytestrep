@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # else:
 #     DEBUG = True
 # print('*****************', environ.get('OTREE_PRODUCTION'))
-#print('*****************', DEBUG)
+# print('*****************', DEBUG)
 # end of the original code
 DEBUG = False
 # don't share this with anybody.
@@ -139,7 +139,7 @@ ROOMS = [
         'name': 'lab01',
         'display_name': 'Эксперимент',
         'participant_label_file': 'PlayerList.txt',
-        'use_secure_urls': True,
+        'use_secure_urls': False,
     },
     {
         'name': 'ICEF_BEE_class_2017',
