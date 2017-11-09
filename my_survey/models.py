@@ -93,11 +93,11 @@ class Player(BasePlayer):
     # )
 
     univ= models.CharField(
-        verbose_name= '''Укажите ВУЗ, в котором учитесь(или который окончили).'''
+        verbose_name= '''Укажите ВУЗ, в котором Вы получили Ваше наивысшее образование.'''
     )
 
     study= models.CharField(
-        verbose_name= '''Укажите  направление подготовки, на котором Вы обучаетесь(или обучались).'''
+        verbose_name= '''Укажите  направление подготовки, на котором Вы обучались в этом ВУЗе.'''
     )
 
     riskat=models.PositiveIntegerField(
