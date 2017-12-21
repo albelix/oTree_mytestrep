@@ -24,7 +24,7 @@ PG game with punishment
 class Constants(BaseConstants):
     name_in_url = 'PG_punishment'
     players_per_group = 5
-    num_rounds = 2
+    num_rounds = 1
     endowment = c(100)
     lumpsum = c(160)
     efficiency_factor = 2
@@ -83,7 +83,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     contribution = models.CurrencyField(doc="""The amount contributed by the player""", min=0, max=100, )
     cumulative_payoff = models.CurrencyField(initial=0)
-    punishment = models.CurrencyField()
+    punishment = models.CurrencyField(initial=0)
     my_contribution = models.CurrencyField(doc="""The amount contributed by the player""", )
     summy_contribution = models.CurrencyField(doc="""Total amount contributed by the player""")
     my_payoff = models.CurrencyField()
@@ -101,7 +101,7 @@ class Player(BasePlayer):
 
     # before punishment
     def my_method(self):
-        self.contribution = sum([p.contribution for p in self.group.get_players()]) #self.in_all_rounds()])
+        self.contribution = sum([p.contribution for p in self.in_all_rounds()])
         self.my_payoff = sum([p.payoff for p in self.in_all_rounds()])
         # for p in self.group.get_players():
         #     self.my_contribution = p.contribution
@@ -112,26 +112,26 @@ class Player(BasePlayer):
 # after punishment
 #    def my_method_tim(self):
     def set_punpay(self):
-        if self.id_in_group != 1:
-            self.pun=sum([self.pun_1 for p in self.group.get_players() if p.id_in_group == 1])
-            print('p.payoff_is', self.pun)
-        if self.id_in_group != 2:
-            self.pun=sum([self.pun_2 for p in self.group.get_players() if p.id_in_group == 2])
-            print('p.payoff_is', self.pun)
-        if self.id_in_group != 3:
-            self.pun=sum([self.pun_3 for p in self.group.get_players() if p.id_in_group == 3])
-            print('p.payoff_is', self.pun)
-        if self.id_in_group != 4:
-            self.pun=sum([self.pun_4 for p in self.group.get_players() if p.id_in_group == 4])
-            print('p.payoff_is', self.pun)
+        if self.id_in_group == 1:
+            self.pun=sum([p.pun_1 for p in self.group.get_players()]) # if p.id_in_group == 1])
+            print('p.punishment_is', self.pun)
+        if self.id_in_group == 2:
+            self.pun=sum([p.pun_2 for p in self.group.get_players()]) # if p.id_in_group == 2])
+            print('p.punishment_is', self.pun)
+        if self.id_in_group == 3:
+            self.pun=sum([p.pun_3 for p in self.group.get_players()]) # if p.id_in_group == 3])
+            print('p.punishment_is', self.pun)
+        if self.id_in_group == 4:
+            self.pun=sum([p.pun_4 for p in self.group.get_players()]) # if p.id_in_group == 4])
+            print('p.punishment_is', self.pun)
         else:
-            self.pun=sum([self.pun_5 for p in self.group.get_players() if p.id_in_group == 5])
-            print('p.payoff_is', self.pun)
+            self.pun=sum([p.pun_5 for p in self.group.get_players()]) # if p.id_in_group == 5])
+            print('p.punishment_is', self.pun)
 
         self.puncost = (self.pun_1 + self.pun_2 + self.pun_3 + self.pun_4 + self.pun_5)*0.2
 
         for p in self.group.get_players():
-            p.profit = p.payoff - self.pun - self.puncost
+            p.profit = self.payoff - self.pun - self.puncost
             print('p.payoff_is', p.profit)
 
         self.my_profit = sum([self.profit for p in self.in_all_rounds()])

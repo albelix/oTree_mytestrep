@@ -10,15 +10,18 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
+
 # Following is the original code
-# if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-#     DEBUG = False
-# else:
-#     DEBUG = True
-# print('*****************', environ.get('OTREE_PRODUCTION'))
-# print('*****************', DEBUG)
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+    DEBUG = False
+else:
+    DEBUG = True
+print('*****************', environ.get('OTREE_PRODUCTION'))
+print('*****************', DEBUG)
 # end of the original code
-DEBUG = False
+
+#DEBUG = False
+
 # don't share this with anybody.
 SECRET_KEY = 'sin7pb_5zoce5g1zxnx7-!cc13yc*d#it0wl!snn$cf=^(%&fh'
 
@@ -240,12 +243,12 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 2,
     #     'app_sequence': ['principal_agent', 'payment_info'],
     # },
-    # {
-    #     'name': 'dictator',
-    #     'display_name': "Dictator Game",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['dictator', 'payment_info'],
-    # },
+    {
+        'name': 'dictator',
+        'display_name': "Dictator Game",
+        'num_demo_participants': 2,
+        'app_sequence': ['dictator', 'payment_info'],
+    },
     # {
     #     'name': 'matching_pennies',
     #     'display_name': "Matching Pennies",
@@ -339,9 +342,15 @@ SESSION_CONFIGS = [
         'app_sequence': ['my_survey'],
     },
     {
+        'name': 'test_1',
+        'display_name': "Конкоп игра",
+        'num_demo_participants': 2,
+        'app_sequence': ['test_1'],
+    },
+    {
         'name': 'PG_standard',
         'display_name': "Базовая игра",
-        'num_demo_participants': 10,
+        'num_demo_participants': 5,
         'app_sequence': ['PG_standard', 'PG_threshold', 'my_survey'],
         'use_browser_bots': False
     },

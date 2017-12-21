@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Формирование коалиций
+{% endblock %}
+
+{% block content %}
+    {% formfield player.coalition_marker label="Вы хотите вступить в коалицию?" %}
+    {% next_button %}
+
+{% endblock %}

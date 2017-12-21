@@ -48,6 +48,7 @@ class PunPage(Page):
             'current_round': self.subsession.round_number
          }
     def get_form_fields(self):
+        # pun_i is punishment by some player to player i
         if self.player.id_in_group == 1:
             return ['pun_2', 'pun_3', 'pun_4', 'pun_5']
         if self.player.id_in_group == 2:

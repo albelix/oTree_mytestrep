@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Сейчас начнется раунд 0
+{% endblock %}
+
+{% block content %}
+    <p>
+       Пожалуйста, нажмите Next, если Вы готовы.
+    </p>
+    {% next_button %}
+
+{% endblock %}

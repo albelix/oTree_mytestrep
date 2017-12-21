@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Результаты формирования коалиции
+{% endblock %}
+
+{% block content %}
+    <p>
+        Информация про коалицию: {{ group.in_coalition_out }}
+    </p>
+    {% next_button %}
+{% endblock %}
+
+

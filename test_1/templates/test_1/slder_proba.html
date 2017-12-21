@@ -1,0 +1,207 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Задание со слайдерами
+{% endblock %}
+
+{% block styles %}
+
+    <link rel="stylesheet" href="{% static "test_1/style.css" %}">
+
+{% endblock %}
+
+{% block content %}
+
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            /* Create three equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 33.33%;
+                padding: 10px;
+                height: 1100px; /* Should be removed. Only for demonstration */
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <h2>Three Equal Columns</h2>
+
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <h2>Column 1</h2>
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_1 }}
+            </p>
+            {% formfield player.slider_1 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_2 }}
+            </p>
+            {% formfield player.slider_2 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_3 }}
+            </p>
+            {% formfield player.slider_3 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_4 }}
+            </p>
+            {% formfield player.slider_4 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_5 }}
+            </p>
+            {% formfield player.slider_5 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_6 }}
+            </p>
+            {% formfield player.slider_6 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_7 }}
+            </p>
+            {% formfield player.slider_7 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_8 }}
+            </p>
+            {% formfield player.slider_8 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_9 }}
+            </p>
+            {% formfield player.slider_9 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_10 }}
+            </p>
+            {% formfield player.slider_10 %}
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <h2>Column 2</h2>
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_11 }}
+            </p>
+            {% formfield player.slider_11 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_12 }}
+            </p>
+            {% formfield player.slider_12 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_13 }}
+            </p>
+            {% formfield player.slider_13 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_14 }}
+            </p>
+            {% formfield player.slider_14 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_15 }}
+            </p>
+            {% formfield player.slider_15 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_16 }}
+            </p>
+            {% formfield player.slider_16 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_17 }}
+            </p>
+            {% formfield player.slider_17 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_18 }}
+            </p>
+            {% formfield player.slider_18 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_19 }}
+            </p>
+            {% formfield player.slider_19 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_20 }}
+            </p>
+            {% formfield player.slider_20 %}
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <h2>Column 3</h2>
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_21 }}
+            </p>
+            {% formfield player.slider_21 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_22 }}
+            </p>
+            {% formfield player.slider_22 %}
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_23 }}
+            </p>
+            {% formfield player.slider_23 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_24 }}
+            </p>
+            {% formfield player.slider_24 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_25 }}
+            </p>
+            {% formfield player.slider_25 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_26 }}
+            </p>
+            {% formfield player.slider_26 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_27 }}
+            </p>
+            {% formfield player.slider_27 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_28 }}
+            </p>
+            {% formfield player.slider_28 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_29 }}
+            </p>
+            {% formfield player.slider_29 %}
+
+            <p>
+                Переместите ползунок на отметку {{ group.slider_position_30 }}
+            </p>
+            {% formfield player.slider_30 %}
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
+
+
