@@ -148,6 +148,12 @@ ROOMS = [
         'name': 'ICEF_BEE_class_2017',
         'display_name': 'ICEF BEE',
     },
+    {
+        'name': 'ConCop_trial',
+        'display_name': 'ICEF BEE',
+        'participant_label_file': 'PlayerList4.txt',
+        'use_secure_urls': False,
+    },
 
 ]
 
