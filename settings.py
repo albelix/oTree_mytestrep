@@ -151,7 +151,7 @@ ROOMS = [
     {
         'name': 'ConCop_trial',
         'display_name': 'ConCop_trial',
-        'participant_label_file': 'PlayerList4.txt',
+        'participant_label_file': 'PlayerList6.txt',
         'use_secure_urls': False,
     },
 
