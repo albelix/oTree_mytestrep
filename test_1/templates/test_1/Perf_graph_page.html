@@ -1,0 +1,126 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Информация о производительности
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Количество слайдеров, которые Вы сделали в этом раунде {{ player.num_of_sliders }}.
+    </p>
+    <p>
+        Ваша производительность в этом раунде {{ player.plr_perf }}.
+    </p>
+    <p>
+        Ваш выигрыш в этом раунде {{ player.plr_payoff }}.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js" ></script>
+
+<div id="container" ></div>
+
+<script> $(function () {
+    var myChart = Highcharts.chart('container', {
+        chart: {
+                type: 'column'
+            },
+        title: {
+            text: 'Производительность игороков'
+        },
+
+{#        subtitle: {#}
+{#            text: 'Source: thesolarfoundation.com'#}
+{#        },#}
+
+        yAxis: {
+            title: {
+                text: 'Производительность'
+            }
+        },
+        xAxis: {
+            title: {
+                text: 'Раунды'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 0
+            }
+        },
+
+        series: [{
+            name: 'Производительность игрока 1',
+            data: [{{ group.plr_1_perf_round_0 }}, {{ group.plr_1_perf_round_1 }}, {{ group.plr_1_perf_round_2 }},
+            {{ group.plr_1_perf_round_3 }}, {{ group.plr_1_perf_round_4 }}, {{ group.plr_1_perf_round_5 }},
+            {{ group.plr_1_perf_round_6 }}]
+        }, {
+            name: 'Производительность игрока 2',
+            data: [{{ group.plr_2_perf_round_0 }}, {{ group.plr_2_perf_round_1 }}, {{ group.plr_2_perf_round_2 }},
+            {{ group.plr_2_perf_round_3 }}, {{ group.plr_2_perf_round_4 }}, {{ group.plr_2_perf_round_5 }},
+            {{ group.plr_2_perf_round_6 }}]
+        },  {
+            name: 'Производительность игрока 3',
+            data: [{{ group.plr_3_perf_round_0 }}, {{ group.plr_3_perf_round_1 }}, {{ group.plr_3_perf_round_2 }},
+            {{ group.plr_3_perf_round_3 }}, {{ group.plr_3_perf_round_4 }}, {{ group.plr_3_perf_round_5 }},
+            {{ group.plr_3_perf_round_6 }}]
+        },  {
+            name: 'Производительность игрока 4',
+            data: [{{ group.plr_4_perf_round_0 }}, {{ group.plr_4_perf_round_1 }}, {{ group.plr_4_perf_round_2 }},
+            {{ group.plr_4_perf_round_3 }}, {{ group.plr_4_perf_round_4 }}, {{ group.plr_4_perf_round_5 }},
+            {{ group.plr_4_perf_round_6 }}]
+        }, {
+            name: 'Производительность игрока 5',
+            data: [{{ group.plr_5_perf_round_0 }}, {{ group.plr_5_perf_round_1 }}, {{ group.plr_5_perf_round_2 }},
+            {{ group.plr_5_perf_round_3 }}, {{ group.plr_5_perf_round_4 }}, {{ group.plr_5_perf_round_5 }},
+            {{ group.plr_5_perf_round_6 }}]
+        },  {
+            name: 'Производительность игрока 6',
+            data: [{{ group.plr_6_perf_round_0 }}, {{ group.plr_6_perf_round_1 }}, {{ group.plr_6_perf_round_2 }},
+            {{ group.plr_6_perf_round_3 }}, {{ group.plr_6_perf_round_4 }}, {{ group.plr_6_perf_round_5 }},
+            {{ group.plr_6_perf_round_6 }}]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+});
+
+</script>
+
+
+{% endblock %}
+
+
+

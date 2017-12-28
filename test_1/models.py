@@ -14,8 +14,8 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'test_1'
-    players_per_group = 2
-    num_rounds = 5
+    players_per_group = 6
+    num_rounds = 7
 
     region_coef_0 = 0.8
     region_coef_1 = 1
@@ -24,7 +24,7 @@ class Constants(BaseConstants):
 
 
     compensation = [1,1.4,2,3,3.6,4]
-    thresholds = [-1,6,12,20,28,40,1000]
+    thresholds = [-1,20,40,60,80,100,1000]
     ecu_rate = c(3)
 
 class Subsession(BaseSubsession):
@@ -33,27 +33,36 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
 
     in_coalition_out = models.CharField()
-    in_coalition_inner = models.CharField()
+    # in_coalition_inner = models.CharField()
+    in_coalition_counter = models.IntegerField()
+
 
     def is_in_coalition(self):
 
         self.in_coalition_out = ""
-        self.in_coalition_inner = []
+        # self.in_coalition_inner = []
 
+        in_coalition_inner = []
         for plr in self.get_players():
             if plr.coalition_marker:
                 self.in_coalition_out += str(plr.id_in_group)
                 self.in_coalition_out += " и "
-                self.in_coalition_inner.append(plr.id_in_group)
+                # self.in_coalition_inner.append(plr.id_in_group)
+                in_coalition_inner.append(plr.id_in_group)
 
-        if len(self.in_coalition_out) > 6:
+        # if len(self.in_coalition_inner) > 1:
+        if len(in_coalition_inner) > 1:
             self.in_coalition_out = self.in_coalition_out[:-3] + " в коалиции"
         else:
-            if len(self.in_coalition_inner) > 0:
-                self.get_player_by_id(int(self.in_coalition_inner[0])).coalition_marker = False
+            # if len(self.in_coalition_inner) > 0:
+            if len(in_coalition_inner) > 0:
+                # self.get_player_by_id(int(self.in_coalition_inner[0])).coalition_marker = False
+                self.get_player_by_id(int(in_coalition_inner[0])).coalition_marker = False
                 self.in_coalition_out = "В коалиции никого нет"
             else:
                 self.in_coalition_out = "В коалиции никого нет"
+
+        self.in_coalition_counter = len(in_coalition_inner)
 
 
 
@@ -258,8 +267,418 @@ class Group(BaseGroup):
                 if (Constants.thresholds[i] < plr.plr_perf and plr.plr_perf <= Constants.thresholds[i + 1]):
                     plr.plr_payoff = round(plr.plr_perf * Constants.compensation[i],2)
 
+    plr_1_perf_round_0 = models.FloatField()
+    plr_1_perf_round_1 = models.FloatField()
+    plr_1_perf_round_2 = models.FloatField()
+    plr_1_perf_round_3 = models.FloatField()
+    plr_1_perf_round_4 = models.FloatField()
+    plr_1_perf_round_5 = models.FloatField()
+    plr_1_perf_round_6 = models.FloatField()
+
+    plr_2_perf_round_0 = models.FloatField()
+    plr_2_perf_round_1 = models.FloatField()
+    plr_2_perf_round_2 = models.FloatField()
+    plr_2_perf_round_3 = models.FloatField()
+    plr_2_perf_round_4 = models.FloatField()
+    plr_2_perf_round_5 = models.FloatField()
+    plr_2_perf_round_6 = models.FloatField()
+
+    plr_3_perf_round_0 = models.FloatField()
+    plr_3_perf_round_1 = models.FloatField()
+    plr_3_perf_round_2 = models.FloatField()
+    plr_3_perf_round_3 = models.FloatField()
+    plr_3_perf_round_4 = models.FloatField()
+    plr_3_perf_round_5 = models.FloatField()
+    plr_3_perf_round_6 = models.FloatField()
+
+    plr_4_perf_round_0 = models.FloatField()
+    plr_4_perf_round_1 = models.FloatField()
+    plr_4_perf_round_2 = models.FloatField()
+    plr_4_perf_round_3 = models.FloatField()
+    plr_4_perf_round_4 = models.FloatField()
+    plr_4_perf_round_5 = models.FloatField()
+    plr_4_perf_round_6 = models.FloatField()
+
+    plr_5_perf_round_0 = models.FloatField()
+    plr_5_perf_round_1 = models.FloatField()
+    plr_5_perf_round_2 = models.FloatField()
+    plr_5_perf_round_3 = models.FloatField()
+    plr_5_perf_round_4 = models.FloatField()
+    plr_5_perf_round_5 = models.FloatField()
+    plr_5_perf_round_6 = models.FloatField()
+
+    plr_6_perf_round_0 = models.FloatField()
+    plr_6_perf_round_1 = models.FloatField()
+    plr_6_perf_round_2 = models.FloatField()
+    plr_6_perf_round_3 = models.FloatField()
+    plr_6_perf_round_4 = models.FloatField()
+    plr_6_perf_round_5 = models.FloatField()
+    plr_6_perf_round_6 = models.FloatField()
+
+    def table_with_perf(self):
+
+        self.plr_1_perf_round_0 = self.get_player_by_id(1).in_round(1).plr_perf
+
+        self.plr_1_perf_round_1 = self.get_player_by_id(1).in_round(2).plr_perf
+        if self.plr_1_perf_round_1 is None:
+            self.plr_1_perf_round_1 = 0
+
+        self.plr_1_perf_round_2 = self.get_player_by_id(1).in_round(3).plr_perf
+        if self.plr_1_perf_round_2 is None:
+            self.plr_1_perf_round_2 = 0
+
+        self.plr_1_perf_round_3 = self.get_player_by_id(1).in_round(4).plr_perf
+        if self.plr_1_perf_round_3 is None:
+            self.plr_1_perf_round_3 = 0
+
+        self.plr_1_perf_round_4 = self.get_player_by_id(1).in_round(5).plr_perf
+        if self.plr_1_perf_round_4 is None:
+            self.plr_1_perf_round_4 = 0
+
+        self.plr_1_perf_round_5 = self.get_player_by_id(1).in_round(6).plr_perf
+        if self.plr_1_perf_round_5 is None:
+            self.plr_1_perf_round_5 = 0
+
+        self.plr_1_perf_round_6 = self.get_player_by_id(1).in_round(7).plr_perf
+        if self.plr_1_perf_round_6 is None:
+            self.plr_1_perf_round_6 = 0
+
+        self.plr_2_perf_round_0 = self.get_player_by_id(2).in_round(1).plr_perf
+
+        self.plr_2_perf_round_1 = self.get_player_by_id(2).in_round(2).plr_perf
+        if self.plr_2_perf_round_1 is None:
+            self.plr_2_perf_round_1 = 0
+
+        self.plr_2_perf_round_2 = self.get_player_by_id(2).in_round(3).plr_perf
+        if self.plr_2_perf_round_2 is None:
+            self.plr_2_perf_round_2 = 0
+
+        self.plr_2_perf_round_3 = self.get_player_by_id(2).in_round(4).plr_perf
+        if self.plr_2_perf_round_3 is None:
+            self.plr_2_perf_round_3 = 0
+
+        self.plr_2_perf_round_4 = self.get_player_by_id(2).in_round(5).plr_perf
+        if self.plr_2_perf_round_4 is None:
+            self.plr_2_perf_round_4 = 0
+
+        self.plr_2_perf_round_5 = self.get_player_by_id(2).in_round(6).plr_perf
+        if self.plr_2_perf_round_5 is None:
+            self.plr_2_perf_round_5 = 0
+
+        self.plr_2_perf_round_6 = self.get_player_by_id(2).in_round(7).plr_perf
+        if self.plr_2_perf_round_6 is None:
+            self.plr_2_perf_round_6 = 0
+
+        self.plr_3_perf_round_0 = self.get_player_by_id(3).in_round(1).plr_perf
+
+        self.plr_3_perf_round_1 = self.get_player_by_id(3).in_round(2).plr_perf
+        if self.plr_3_perf_round_1 is None:
+            self.plr_3_perf_round_1 = 0
+
+        self.plr_3_perf_round_2 = self.get_player_by_id(3).in_round(3).plr_perf
+        if self.plr_3_perf_round_2 is None:
+            self.plr_3_perf_round_2 = 0
+
+        self.plr_3_perf_round_3 = self.get_player_by_id(3).in_round(4).plr_perf
+        if self.plr_3_perf_round_3 is None:
+            self.plr_3_perf_round_3 = 0
+
+        self.plr_3_perf_round_4 = self.get_player_by_id(3).in_round(5).plr_perf
+        if self.plr_3_perf_round_4 is None:
+            self.plr_3_perf_round_4 = 0
+
+        self.plr_3_perf_round_5 = self.get_player_by_id(3).in_round(6).plr_perf
+        if self.plr_3_perf_round_5 is None:
+            self.plr_3_perf_round_5 = 0
+
+        self.plr_3_perf_round_6 = self.get_player_by_id(3).in_round(7).plr_perf
+        if self.plr_3_perf_round_6 is None:
+            self.plr_3_perf_round_6 = 0
+
+        self.plr_4_perf_round_0 = self.get_player_by_id(4).in_round(1).plr_perf
+
+        self.plr_4_perf_round_1 = self.get_player_by_id(4).in_round(2).plr_perf
+        if self.plr_4_perf_round_1 is None:
+            self.plr_4_perf_round_1 = 0
+
+        self.plr_4_perf_round_2 = self.get_player_by_id(4).in_round(3).plr_perf
+        if self.plr_4_perf_round_2 is None:
+            self.plr_4_perf_round_2 = 0
+
+        self.plr_4_perf_round_3 = self.get_player_by_id(4).in_round(4).plr_perf
+        if self.plr_4_perf_round_3 is None:
+            self.plr_4_perf_round_3 = 0
+
+        self.plr_4_perf_round_4 = self.get_player_by_id(4).in_round(5).plr_perf
+        if self.plr_4_perf_round_4 is None:
+            self.plr_4_perf_round_4 = 0
+
+        self.plr_4_perf_round_5 = self.get_player_by_id(4).in_round(6).plr_perf
+        if self.plr_4_perf_round_5 is None:
+            self.plr_4_perf_round_5 = 0
+
+        self.plr_4_perf_round_6 = self.get_player_by_id(4).in_round(7).plr_perf
+        if self.plr_4_perf_round_6 is None:
+            self.plr_4_perf_round_6 = 0
+
+        self.plr_5_perf_round_0 = self.get_player_by_id(5).in_round(1).plr_perf
+
+        self.plr_5_perf_round_1 = self.get_player_by_id(5).in_round(2).plr_perf
+        if self.plr_5_perf_round_1 is None:
+            self.plr_5_perf_round_1 = 0
+
+        self.plr_5_perf_round_2 = self.get_player_by_id(5).in_round(3).plr_perf
+        if self.plr_5_perf_round_2 is None:
+            self.plr_5_perf_round_2 = 0
+
+        self.plr_5_perf_round_3 = self.get_player_by_id(5).in_round(4).plr_perf
+        if self.plr_5_perf_round_3 is None:
+            self.plr_5_perf_round_3 = 0
+
+        self.plr_5_perf_round_4 = self.get_player_by_id(5).in_round(5).plr_perf
+        if self.plr_5_perf_round_4 is None:
+            self.plr_5_perf_round_4 = 0
+
+        self.plr_5_perf_round_5 = self.get_player_by_id(5).in_round(6).plr_perf
+        if self.plr_5_perf_round_5 is None:
+            self.plr_5_perf_round_5 = 0
+
+        self.plr_5_perf_round_6 = self.get_player_by_id(5).in_round(7).plr_perf
+        if self.plr_5_perf_round_6 is None:
+            self.plr_5_perf_round_6 = 0
+
+        self.plr_6_perf_round_0 = self.get_player_by_id(6).in_round(1).plr_perf
+
+        self.plr_6_perf_round_1 = self.get_player_by_id(6).in_round(2).plr_perf
+        if self.plr_6_perf_round_1 is None:
+            self.plr_6_perf_round_1 = 0
+
+        self.plr_6_perf_round_2 = self.get_player_by_id(6).in_round(3).plr_perf
+        if self.plr_6_perf_round_2 is None:
+            self.plr_6_perf_round_2 = 0
+
+        self.plr_6_perf_round_3 = self.get_player_by_id(6).in_round(4).plr_perf
+        if self.plr_6_perf_round_3 is None:
+            self.plr_6_perf_round_3 = 0
+
+        self.plr_6_perf_round_4 = self.get_player_by_id(6).in_round(5).plr_perf
+        if self.plr_6_perf_round_4 is None:
+            self.plr_6_perf_round_4 = 0
+
+        self.plr_6_perf_round_5 = self.get_player_by_id(6).in_round(6).plr_perf
+        if self.plr_6_perf_round_5 is None:
+            self.plr_6_perf_round_5 = 0
+
+        self.plr_6_perf_round_6 = self.get_player_by_id(6).in_round(7).plr_perf
+        if self.plr_6_perf_round_6 is None:
+            self.plr_6_perf_round_6 = 0
 
 
+    plr_1_payoff_round_0 = models.FloatField()
+    plr_1_payoff_round_1 = models.FloatField()
+    plr_1_payoff_round_2 = models.FloatField()
+    plr_1_payoff_round_3 = models.FloatField()
+    plr_1_payoff_round_4 = models.FloatField()
+    plr_1_payoff_round_5 = models.FloatField()
+    plr_1_payoff_round_6 = models.FloatField()
+
+    plr_2_payoff_round_0 = models.FloatField()
+    plr_2_payoff_round_1 = models.FloatField()
+    plr_2_payoff_round_2 = models.FloatField()
+    plr_2_payoff_round_3 = models.FloatField()
+    plr_2_payoff_round_4 = models.FloatField()
+    plr_2_payoff_round_5 = models.FloatField()
+    plr_2_payoff_round_6 = models.FloatField()
+
+    plr_3_payoff_round_0 = models.FloatField()
+    plr_3_payoff_round_1 = models.FloatField()
+    plr_3_payoff_round_2 = models.FloatField()
+    plr_3_payoff_round_3 = models.FloatField()
+    plr_3_payoff_round_4 = models.FloatField()
+    plr_3_payoff_round_5 = models.FloatField()
+    plr_3_payoff_round_6 = models.FloatField()
+
+    plr_4_payoff_round_0 = models.FloatField()
+    plr_4_payoff_round_1 = models.FloatField()
+    plr_4_payoff_round_2 = models.FloatField()
+    plr_4_payoff_round_3 = models.FloatField()
+    plr_4_payoff_round_4 = models.FloatField()
+    plr_4_payoff_round_5 = models.FloatField()
+    plr_4_payoff_round_6 = models.FloatField()
+
+    plr_5_payoff_round_0 = models.FloatField()
+    plr_5_payoff_round_1 = models.FloatField()
+    plr_5_payoff_round_2 = models.FloatField()
+    plr_5_payoff_round_3 = models.FloatField()
+    plr_5_payoff_round_4 = models.FloatField()
+    plr_5_payoff_round_5 = models.FloatField()
+    plr_5_payoff_round_6 = models.FloatField()
+
+    plr_6_payoff_round_0 = models.FloatField()
+    plr_6_payoff_round_1 = models.FloatField()
+    plr_6_payoff_round_2 = models.FloatField()
+    plr_6_payoff_round_3 = models.FloatField()
+    plr_6_payoff_round_4 = models.FloatField()
+    plr_6_payoff_round_5 = models.FloatField()
+    plr_6_payoff_round_6 = models.FloatField()
+
+    def table_with_payoff(self):
+
+        self.plr_1_payoff_round_0 = self.get_player_by_id(1).in_round(1).plr_payoff
+
+        self.plr_1_payoff_round_1 = self.get_player_by_id(1).in_round(2).plr_payoff
+        if self.plr_1_payoff_round_1 is None:
+            self.plr_1_payoff_round_1 = 0
+
+        self.plr_1_payoff_round_2 = self.get_player_by_id(1).in_round(3).plr_payoff
+        if self.plr_1_payoff_round_2 is None:
+            self.plr_1_payoff_round_2 = 0
+
+        self.plr_1_payoff_round_3 = self.get_player_by_id(1).in_round(4).plr_payoff
+        if self.plr_1_payoff_round_3 is None:
+            self.plr_1_payoff_round_3 = 0
+
+        self.plr_1_payoff_round_4 = self.get_player_by_id(1).in_round(5).plr_payoff
+        if self.plr_1_payoff_round_4 is None:
+            self.plr_1_payoff_round_4 = 0
+
+        self.plr_1_payoff_round_5 = self.get_player_by_id(1).in_round(6).plr_payoff
+        if self.plr_1_payoff_round_5 is None:
+            self.plr_1_payoff_round_5 = 0
+
+        self.plr_1_payoff_round_6 = self.get_player_by_id(1).in_round(7).plr_payoff
+        if self.plr_1_payoff_round_6 is None:
+            self.plr_1_payoff_round_6 = 0
+
+        self.plr_2_payoff_round_0 = self.get_player_by_id(2).in_round(1).plr_payoff
+
+        self.plr_2_payoff_round_1 = self.get_player_by_id(2).in_round(2).plr_payoff
+        if self.plr_2_payoff_round_1 is None:
+            self.plr_2_payoff_round_1 = 0
+
+        self.plr_2_payoff_round_2 = self.get_player_by_id(2).in_round(3).plr_payoff
+        if self.plr_2_payoff_round_2 is None:
+            self.plr_2_payoff_round_2 = 0
+
+        self.plr_2_payoff_round_3 = self.get_player_by_id(2).in_round(4).plr_payoff
+        if self.plr_2_payoff_round_3 is None:
+            self.plr_2_payoff_round_3 = 0
+
+        self.plr_2_payoff_round_4 = self.get_player_by_id(2).in_round(5).plr_payoff
+        if self.plr_2_payoff_round_4 is None:
+            self.plr_2_payoff_round_4 = 0
+
+        self.plr_2_payoff_round_5 = self.get_player_by_id(2).in_round(6).plr_payoff
+        if self.plr_2_payoff_round_5 is None:
+            self.plr_2_payoff_round_5 = 0
+
+        self.plr_2_payoff_round_6 = self.get_player_by_id(2).in_round(7).plr_payoff
+        if self.plr_2_payoff_round_6 is None:
+            self.plr_2_payoff_round_6 = 0
+
+        self.plr_3_payoff_round_0 = self.get_player_by_id(3).in_round(1).plr_payoff
+
+        self.plr_3_payoff_round_1 = self.get_player_by_id(3).in_round(2).plr_payoff
+        if self.plr_3_payoff_round_1 is None:
+            self.plr_3_payoff_round_1 = 0
+
+        self.plr_3_payoff_round_2 = self.get_player_by_id(3).in_round(3).plr_payoff
+        if self.plr_3_payoff_round_2 is None:
+            self.plr_3_payoff_round_2 = 0
+
+        self.plr_3_payoff_round_3 = self.get_player_by_id(3).in_round(4).plr_payoff
+        if self.plr_3_payoff_round_3 is None:
+            self.plr_3_payoff_round_3 = 0
+
+        self.plr_3_payoff_round_4 = self.get_player_by_id(3).in_round(5).plr_payoff
+        if self.plr_3_payoff_round_4 is None:
+            self.plr_3_payoff_round_4 = 0
+
+        self.plr_3_payoff_round_5 = self.get_player_by_id(3).in_round(6).plr_payoff
+        if self.plr_3_payoff_round_5 is None:
+            self.plr_3_payoff_round_5 = 0
+
+        self.plr_3_payoff_round_6 = self.get_player_by_id(3).in_round(7).plr_payoff
+        if self.plr_3_payoff_round_6 is None:
+            self.plr_3_payoff_round_6 = 0
+
+        self.plr_4_payoff_round_0 = self.get_player_by_id(4).in_round(1).plr_payoff
+
+        self.plr_4_payoff_round_1 = self.get_player_by_id(4).in_round(2).plr_payoff
+        if self.plr_4_payoff_round_1 is None:
+            self.plr_4_payoff_round_1 = 0
+
+        self.plr_4_payoff_round_2 = self.get_player_by_id(4).in_round(3).plr_payoff
+        if self.plr_4_payoff_round_2 is None:
+            self.plr_4_payoff_round_2 = 0
+
+        self.plr_4_payoff_round_3 = self.get_player_by_id(4).in_round(4).plr_payoff
+        if self.plr_4_payoff_round_3 is None:
+            self.plr_4_payoff_round_3 = 0
+
+        self.plr_4_payoff_round_4 = self.get_player_by_id(4).in_round(5).plr_payoff
+        if self.plr_4_payoff_round_4 is None:
+            self.plr_4_payoff_round_4 = 0
+
+        self.plr_4_payoff_round_5 = self.get_player_by_id(4).in_round(6).plr_payoff
+        if self.plr_4_payoff_round_5 is None:
+            self.plr_4_payoff_round_5 = 0
+
+        self.plr_4_payoff_round_6 = self.get_player_by_id(4).in_round(7).plr_payoff
+        if self.plr_4_payoff_round_6 is None:
+            self.plr_4_payoff_round_6 = 0
+
+        self.plr_5_payoff_round_0 = self.get_player_by_id(5).in_round(1).plr_payoff
+
+        self.plr_5_payoff_round_1 = self.get_player_by_id(5).in_round(2).plr_payoff
+        if self.plr_5_payoff_round_1 is None:
+            self.plr_5_payoff_round_1 = 0
+
+        self.plr_5_payoff_round_2 = self.get_player_by_id(5).in_round(3).plr_payoff
+        if self.plr_5_payoff_round_2 is None:
+            self.plr_5_payoff_round_2 = 0
+
+        self.plr_5_payoff_round_3 = self.get_player_by_id(5).in_round(4).plr_payoff
+        if self.plr_5_payoff_round_3 is None:
+            self.plr_5_payoff_round_3 = 0
+
+        self.plr_5_payoff_round_4 = self.get_player_by_id(5).in_round(5).plr_payoff
+        if self.plr_5_payoff_round_4 is None:
+            self.plr_5_payoff_round_4 = 0
+
+        self.plr_5_payoff_round_5 = self.get_player_by_id(5).in_round(6).plr_payoff
+        if self.plr_5_payoff_round_5 is None:
+            self.plr_5_payoff_round_5 = 0
+
+        self.plr_5_payoff_round_6 = self.get_player_by_id(5).in_round(7).plr_payoff
+        if self.plr_5_payoff_round_6 is None:
+            self.plr_5_payoff_round_6 = 0
+
+        self.plr_6_payoff_round_0 = self.get_player_by_id(6).in_round(1).plr_payoff
+
+        self.plr_6_payoff_round_1 = self.get_player_by_id(6).in_round(2).plr_payoff
+        if self.plr_6_payoff_round_1 is None:
+            self.plr_6_payoff_round_1 = 0
+
+        self.plr_6_payoff_round_2 = self.get_player_by_id(6).in_round(3).plr_payoff
+        if self.plr_6_payoff_round_2 is None:
+            self.plr_6_payoff_round_2 = 0
+
+        self.plr_6_payoff_round_3 = self.get_player_by_id(6).in_round(4).plr_payoff
+        if self.plr_6_payoff_round_3 is None:
+            self.plr_6_payoff_round_3 = 0
+
+        self.plr_6_payoff_round_4 = self.get_player_by_id(6).in_round(5).plr_payoff
+        if self.plr_6_payoff_round_4 is None:
+            self.plr_6_payoff_round_4 = 0
+
+        self.plr_6_payoff_round_5 = self.get_player_by_id(6).in_round(6).plr_payoff
+        if self.plr_6_payoff_round_5 is None:
+            self.plr_6_payoff_round_5 = 0
+
+        self.plr_6_payoff_round_6 = self.get_player_by_id(6).in_round(7).plr_payoff
+        if self.plr_6_payoff_round_6 is None:
+            self.plr_6_payoff_round_6 = 0
 
 
 
@@ -400,6 +819,12 @@ class Player(BasePlayer):
         if self.id_in_group == 1:
             return 'High region'
         if self.id_in_group == 2:
-            return 'Low region'
+            return 'High region'
         if self.id_in_group == 3:
+            return 'High region'
+        if self.id_in_group == 4:
+            return 'Low region'
+        if self.id_in_group == 5:
+            return 'Low region'
+        if self.id_in_group == 6:
             return 'Low region'

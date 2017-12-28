@@ -12,15 +12,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
 
 # Following is the original code
-if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-    DEBUG = False
-else:
-    DEBUG = True
-print('*****************', environ.get('OTREE_PRODUCTION'))
-print('*****************', DEBUG)
+# if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+#     DEBUG = False
+# else:
+#     DEBUG = True
+# print('*****************', environ.get('OTREE_PRODUCTION'))
+# print('*****************', DEBUG)
 # end of the original code
 
-#DEBUG = False
+DEBUG = False
 
 # don't share this with anybody.
 SECRET_KEY = 'sin7pb_5zoce5g1zxnx7-!cc13yc*d#it0wl!snn$cf=^(%&fh'
@@ -150,7 +150,7 @@ ROOMS = [
     },
     {
         'name': 'ConCop_trial',
-        'display_name': 'ICEF BEE',
+        'display_name': 'ConCop_trial',
         'participant_label_file': 'PlayerList4.txt',
         'use_secure_urls': False,
     },
@@ -341,18 +341,23 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['my_public_goods', 'my_PGmin', 'my_survey', 'payment_info'],
     #     #'use_browser_bots': True
     # },
+    {   'name': 'test_1',
+        'display_name': "Конкоп игра 1",
+        'num_demo_participants': 6,
+        'app_sequence': ['test_1'],
+        },
     {
         'name': 'my_survey',
         'display_name': "Опрос (тест)",
         'num_demo_participants': 1,
         'app_sequence': ['my_survey'],
     },
-    {
-        'name': 'test_1',
-        'display_name': "Конкоп игра",
-        'num_demo_participants': 2,
-        'app_sequence': ['test_1'],
-    },
+    # {
+    #     'name': 'test_1',
+    #     'display_name': "Конкоп игра",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['test_1'],
+    # },
     {
         'name': 'PG_standard',
         'display_name': "Базовая игра",

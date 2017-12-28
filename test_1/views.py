@@ -26,6 +26,14 @@ class Round_4(Page):
     def is_displayed(self):
         return self.round_number == 5
 
+class Round_5(Page):
+    def is_displayed(self):
+        return self.round_number == 6
+
+class Round_6(Page):
+    def is_displayed(self):
+        return self.round_number == 7
+
 class Coalition_to_be_or_not_to_be(Page):
     form_model = models.Player
     form_fields = ['coalition_marker']
@@ -44,21 +52,14 @@ class ResultsWaitPage1(WaitPage):
 class Coalition_results_if_coalition(Page):
 
     def is_displayed(self):
-        return len(self.group.in_coalition_inner) > 1
+        return (self.group.in_coalition_counter > 1 and self.round_number != 1 and self.player.coalition_marker)
 
-    def is_displayed(self):
-        return self.round_number != 1
-
-    def is_displayed(self):
-        return self.player.coalition_marker
 
 class Coalition_results_if_no_coalition(Page):
 
     def is_displayed(self):
-        return len(self.group.in_coalition_inner) <= 1
+        return (self.group.in_coalition_counter <= 1 and self.round_number != 1)
 
-    def is_displayed(self):
-        return self.round_number != 1
 
 
 
@@ -81,12 +82,15 @@ class ResultsWaitPage3(WaitPage):
             self.group.performance()
             self.group.payoff_for_coalition()
             self.group.payoff_for_non_coalition()
+            self.group.table_with_perf()
+            self.group.table_with_payoff()
 
         else:
             self.group.set_sliders()
             self.group.performance()
             self.group.payoff_for_0_round()
-
+            self.group.table_with_perf()
+            self.group.table_with_payoff()
 
 
 
@@ -96,16 +100,11 @@ class Payoff_page_2(Page):
 
     def vars_for_template(self):
         dict_with_perf_payoffs = {}
-        for p in range(2):
+        for p in range(6):
             total_perf = 0
             total_payoff = 0
 
             for i in range(5):
-                key = 'plr_' + str(p+1) + '_perf_round_' + str(i)
-                dict_with_perf_payoffs[key] = self.group.get_player_by_id(p+1).in_round(i+1).plr_perf
-                key = 'plr_' + str(p+1) + '_payoff_round_' + str(i)
-                dict_with_perf_payoffs[key] = self.group.get_player_by_id(p+1).in_round(i+1).plr_payoff
-
                 if self.group.get_player_by_id(p+1).in_round(i+1).plr_perf is None:
                     total_perf += 0
                 else:
@@ -124,12 +123,20 @@ class Payoff_page_2(Page):
         return dict_with_perf_payoffs
 
 
+class Payoff_graph_page(Page):
+    pass
+
+class Perf_graph_page(Page):
+    pass
+
 page_sequence = [
     Round_0,
     Round_1,
     Round_2,
     Round_3,
     Round_4,
+    Round_5,
+    Round_6,
     WaitPage0,
     Coalition_to_be_or_not_to_be,
     ResultsWaitPage1,
@@ -138,5 +145,10 @@ page_sequence = [
     ResultsWaitPage2,
     slder_proba,
     ResultsWaitPage3,
-    Payoff_page_2
+    # Payoff_page_2,
+    WaitPage0,
+    Perf_graph_page,
+    WaitPage0,
+    Payoff_graph_page
+
 ]

@@ -7,6 +7,37 @@
 
 {% block content %}
     <p>
+        Вы игрок {{ player.id_in_group }}.
+    </p>
+    <p>
+        В данном раунде Вы будете принимать решение производить продукт в коалиции или индивидуально,
+        вам предстоит выполнить производственное задание по перемещению бегунка расположенного на шкале от 1 до 100 в
+        заданную позицию. Каждый бегунок, поставленный на требуемое место, приносит вам Х промежуточных баллов.
+        Промежуточные баллы умножаются на ваш коэффициент (k) для 1, 2 и 3 игроков k = 1.2, для 4,5,6 k = 0.8, и это произведение определяет итоговые баллы Y, которые
+        приносит вам каждый бегунок.
+        Каждый балл стоит некоторое количество токенов, которое определяется по следующей таблице:
+    </p>
+
+    <p><big>Компенсационная таблица </big></p>
+    <style type="text/css">
+    .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+    .tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+    .tftable tr {background-color:#ffffff;}
+    .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+    .tftable tr:hover {background-color:#ffff99;}
+    </style>
+
+    <table class="tftable" border="1">
+    <tr><th>Вклад всех участников в производство</th><th>Произведенный продукт</th></tr>
+    <tr><td>0 - 20</td><td> Y </td></tr>
+    <tr><td>21 - 40</td><td> 1.4Y </td></tr>
+    <tr><td>41 - 60</td><td> 2Y </td></tr>
+    <tr><td>61 - 80</td><td> 3Y </td></tr>
+    <tr><td>81 - 100</td><td> 3.6Y </td></tr>
+    <tr><td>101 - 240</td><td> 4Y </td></tr>
+    </table>
+
+    <p>
        Пожалуйста, нажмите Next, если Вы готовы.
     </p>
     {% next_button %}
