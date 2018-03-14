@@ -12,15 +12,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
 
 # Following is the original code
-if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-    DEBUG = False
-else:
-    DEBUG = True
-print('*****************', environ.get('OTREE_PRODUCTION'))
-print('*****************', DEBUG)
+# if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+#    DEBUG = False
+# else:
+#    DEBUG = True
+# print('*****************', environ.get('OTREE_PRODUCTION'))
+# print('*****************', DEBUG)
 # end of the original code
 
-# DEBUG = False
+DEBUG = False
 
 # don't share this with anybody.
 SECRET_KEY = 'sin7pb_5zoce5g1zxnx7-!cc13yc*d#it0wl!snn$cf=^(%&fh'
