@@ -149,9 +149,9 @@ ROOMS = [
         'display_name': 'ICEF BEE',
     },
     {
-        'name': 'ConCop_trial',
-        'display_name': 'ConCop_trial',
-        'participant_label_file': 'PlayerList6.txt',
+        'name': 'CUSB',
+        'display_name': 'CUSB_0318',
+        'participant_label_file': 'PlayerList25.txt',
         'use_secure_urls': False,
     },
 
